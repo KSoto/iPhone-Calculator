@@ -1,0 +1,463 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CE41B4A2160AD59B003FE0C0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE41B4A1160AD59B003FE0C0 /* UIKit.framework */; };
+		CE41B4A4160AD59B003FE0C0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE41B4A3160AD59B003FE0C0 /* Foundation.framework */; };
+		CE41B4A6160AD59B003FE0C0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE41B4A5160AD59B003FE0C0 /* CoreGraphics.framework */; };
+		CE41B4AC160AD59B003FE0C0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE41B4AA160AD59B003FE0C0 /* InfoPlist.strings */; };
+		CE41B4AE160AD59B003FE0C0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE41B4AD160AD59B003FE0C0 /* main.m */; };
+		CE41B4B2160AD59B003FE0C0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE41B4B1160AD59B003FE0C0 /* AppDelegate.m */; };
+		CE41B4B5160AD59B003FE0C0 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE41B4B3160AD59B003FE0C0 /* MainStoryboard_iPhone.storyboard */; };
+		CE41B4B8160AD59B003FE0C0 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE41B4B6160AD59B003FE0C0 /* MainStoryboard_iPad.storyboard */; };
+		CE41B4BB160AD59B003FE0C0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE41B4BA160AD59B003FE0C0 /* ViewController.m */; };
+		CE41B4C3160AD59C003FE0C0 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE41B4C2160AD59C003FE0C0 /* SenTestingKit.framework */; };
+		CE41B4C4160AD59C003FE0C0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE41B4A1160AD59B003FE0C0 /* UIKit.framework */; };
+		CE41B4C5160AD59C003FE0C0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE41B4A3160AD59B003FE0C0 /* Foundation.framework */; };
+		CE41B4CD160AD59C003FE0C0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE41B4CB160AD59C003FE0C0 /* InfoPlist.strings */; };
+		CE41B4D0160AD59C003FE0C0 /* Soto_Katie_asgt3Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = CE41B4CF160AD59C003FE0C0 /* Soto_Katie_asgt3Tests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CE41B4C6160AD59C003FE0C0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CE41B494160AD59B003FE0C0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CE41B49C160AD59B003FE0C0;
+			remoteInfo = Soto.Katie_asgt3;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		CE41B49D160AD59B003FE0C0 /* Soto.Katie_asgt3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Soto.Katie_asgt3.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE41B4A1160AD59B003FE0C0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		CE41B4A3160AD59B003FE0C0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		CE41B4A5160AD59B003FE0C0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		CE41B4A9160AD59B003FE0C0 /* Soto.Katie_asgt3-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Soto.Katie_asgt3-Info.plist"; sourceTree = "<group>"; };
+		CE41B4AB160AD59B003FE0C0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CE41B4AD160AD59B003FE0C0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CE41B4AF160AD59B003FE0C0 /* Soto.Katie_asgt3-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Soto.Katie_asgt3-Prefix.pch"; sourceTree = "<group>"; };
+		CE41B4B0160AD59B003FE0C0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		CE41B4B1160AD59B003FE0C0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		CE41B4B4160AD59B003FE0C0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
+		CE41B4B7160AD59B003FE0C0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
+		CE41B4B9160AD59B003FE0C0 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		CE41B4BA160AD59B003FE0C0 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		CE41B4C1160AD59C003FE0C0 /* Soto.Katie_asgt3Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Soto.Katie_asgt3Tests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE41B4C2160AD59C003FE0C0 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		CE41B4CA160AD59C003FE0C0 /* Soto.Katie_asgt3Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Soto.Katie_asgt3Tests-Info.plist"; sourceTree = "<group>"; };
+		CE41B4CC160AD59C003FE0C0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CE41B4CE160AD59C003FE0C0 /* Soto_Katie_asgt3Tests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Soto_Katie_asgt3Tests.h; sourceTree = "<group>"; };
+		CE41B4CF160AD59C003FE0C0 /* Soto_Katie_asgt3Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Soto_Katie_asgt3Tests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CE41B49A160AD59B003FE0C0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE41B4A2160AD59B003FE0C0 /* UIKit.framework in Frameworks */,
+				CE41B4A4160AD59B003FE0C0 /* Foundation.framework in Frameworks */,
+				CE41B4A6160AD59B003FE0C0 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE41B4BD160AD59C003FE0C0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE41B4C3160AD59C003FE0C0 /* SenTestingKit.framework in Frameworks */,
+				CE41B4C4160AD59C003FE0C0 /* UIKit.framework in Frameworks */,
+				CE41B4C5160AD59C003FE0C0 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CE41B492160AD59B003FE0C0 = {
+			isa = PBXGroup;
+			children = (
+				CE41B4A7160AD59B003FE0C0 /* Soto.Katie_asgt3 */,
+				CE41B4C8160AD59C003FE0C0 /* Soto.Katie_asgt3Tests */,
+				CE41B4A0160AD59B003FE0C0 /* Frameworks */,
+				CE41B49E160AD59B003FE0C0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CE41B49E160AD59B003FE0C0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CE41B49D160AD59B003FE0C0 /* Soto.Katie_asgt3.app */,
+				CE41B4C1160AD59C003FE0C0 /* Soto.Katie_asgt3Tests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CE41B4A0160AD59B003FE0C0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CE41B4A1160AD59B003FE0C0 /* UIKit.framework */,
+				CE41B4A3160AD59B003FE0C0 /* Foundation.framework */,
+				CE41B4A5160AD59B003FE0C0 /* CoreGraphics.framework */,
+				CE41B4C2160AD59C003FE0C0 /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CE41B4A7160AD59B003FE0C0 /* Soto.Katie_asgt3 */ = {
+			isa = PBXGroup;
+			children = (
+				CE41B4B0160AD59B003FE0C0 /* AppDelegate.h */,
+				CE41B4B1160AD59B003FE0C0 /* AppDelegate.m */,
+				CE41B4B3160AD59B003FE0C0 /* MainStoryboard_iPhone.storyboard */,
+				CE41B4B6160AD59B003FE0C0 /* MainStoryboard_iPad.storyboard */,
+				CE41B4B9160AD59B003FE0C0 /* ViewController.h */,
+				CE41B4BA160AD59B003FE0C0 /* ViewController.m */,
+				CE41B4A8160AD59B003FE0C0 /* Supporting Files */,
+			);
+			path = Soto.Katie_asgt3;
+			sourceTree = "<group>";
+		};
+		CE41B4A8160AD59B003FE0C0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CE41B4A9160AD59B003FE0C0 /* Soto.Katie_asgt3-Info.plist */,
+				CE41B4AA160AD59B003FE0C0 /* InfoPlist.strings */,
+				CE41B4AD160AD59B003FE0C0 /* main.m */,
+				CE41B4AF160AD59B003FE0C0 /* Soto.Katie_asgt3-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CE41B4C8160AD59C003FE0C0 /* Soto.Katie_asgt3Tests */ = {
+			isa = PBXGroup;
+			children = (
+				CE41B4CE160AD59C003FE0C0 /* Soto_Katie_asgt3Tests.h */,
+				CE41B4CF160AD59C003FE0C0 /* Soto_Katie_asgt3Tests.m */,
+				CE41B4C9160AD59C003FE0C0 /* Supporting Files */,
+			);
+			path = Soto.Katie_asgt3Tests;
+			sourceTree = "<group>";
+		};
+		CE41B4C9160AD59C003FE0C0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CE41B4CA160AD59C003FE0C0 /* Soto.Katie_asgt3Tests-Info.plist */,
+				CE41B4CB160AD59C003FE0C0 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CE41B49C160AD59B003FE0C0 /* Soto.Katie_asgt3 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE41B4D3160AD59C003FE0C0 /* Build configuration list for PBXNativeTarget "Soto.Katie_asgt3" */;
+			buildPhases = (
+				CE41B499160AD59B003FE0C0 /* Sources */,
+				CE41B49A160AD59B003FE0C0 /* Frameworks */,
+				CE41B49B160AD59B003FE0C0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Soto.Katie_asgt3;
+			productName = Soto.Katie_asgt3;
+			productReference = CE41B49D160AD59B003FE0C0 /* Soto.Katie_asgt3.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CE41B4C0160AD59C003FE0C0 /* Soto.Katie_asgt3Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE41B4D6160AD59C003FE0C0 /* Build configuration list for PBXNativeTarget "Soto.Katie_asgt3Tests" */;
+			buildPhases = (
+				CE41B4BC160AD59C003FE0C0 /* Sources */,
+				CE41B4BD160AD59C003FE0C0 /* Frameworks */,
+				CE41B4BE160AD59C003FE0C0 /* Resources */,
+				CE41B4BF160AD59C003FE0C0 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CE41B4C7160AD59C003FE0C0 /* PBXTargetDependency */,
+			);
+			name = Soto.Katie_asgt3Tests;
+			productName = Soto.Katie_asgt3Tests;
+			productReference = CE41B4C1160AD59C003FE0C0 /* Soto.Katie_asgt3Tests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CE41B494160AD59B003FE0C0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0440;
+				ORGANIZATIONNAME = "Katie Soto";
+			};
+			buildConfigurationList = CE41B497160AD59B003FE0C0 /* Build configuration list for PBXProject "Soto.Katie_asgt3" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = CE41B492160AD59B003FE0C0;
+			productRefGroup = CE41B49E160AD59B003FE0C0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CE41B49C160AD59B003FE0C0 /* Soto.Katie_asgt3 */,
+				CE41B4C0160AD59C003FE0C0 /* Soto.Katie_asgt3Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CE41B49B160AD59B003FE0C0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE41B4AC160AD59B003FE0C0 /* InfoPlist.strings in Resources */,
+				CE41B4B5160AD59B003FE0C0 /* MainStoryboard_iPhone.storyboard in Resources */,
+				CE41B4B8160AD59B003FE0C0 /* MainStoryboard_iPad.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE41B4BE160AD59C003FE0C0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE41B4CD160AD59C003FE0C0 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		CE41B4BF160AD59C003FE0C0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CE41B499160AD59B003FE0C0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE41B4AE160AD59B003FE0C0 /* main.m in Sources */,
+				CE41B4B2160AD59B003FE0C0 /* AppDelegate.m in Sources */,
+				CE41B4BB160AD59B003FE0C0 /* ViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE41B4BC160AD59C003FE0C0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE41B4D0160AD59C003FE0C0 /* Soto_Katie_asgt3Tests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CE41B4C7160AD59C003FE0C0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CE41B49C160AD59B003FE0C0 /* Soto.Katie_asgt3 */;
+			targetProxy = CE41B4C6160AD59C003FE0C0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		CE41B4AA160AD59B003FE0C0 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CE41B4AB160AD59B003FE0C0 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		CE41B4B3160AD59B003FE0C0 /* MainStoryboard_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CE41B4B4160AD59B003FE0C0 /* en */,
+			);
+			name = MainStoryboard_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		CE41B4B6160AD59B003FE0C0 /* MainStoryboard_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CE41B4B7160AD59B003FE0C0 /* en */,
+			);
+			name = MainStoryboard_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		CE41B4CB160AD59C003FE0C0 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CE41B4CC160AD59C003FE0C0 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CE41B4D1160AD59C003FE0C0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CE41B4D2160AD59C003FE0C0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CE41B4D4160AD59C003FE0C0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Soto.Katie_asgt3/Soto.Katie_asgt3-Prefix.pch";
+				INFOPLIST_FILE = "Soto.Katie_asgt3/Soto.Katie_asgt3-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		CE41B4D5160AD59C003FE0C0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Soto.Katie_asgt3/Soto.Katie_asgt3-Prefix.pch";
+				INFOPLIST_FILE = "Soto.Katie_asgt3/Soto.Katie_asgt3-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		CE41B4D7160AD59C003FE0C0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Soto.Katie_asgt3.app/Soto.Katie_asgt3";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Soto.Katie_asgt3/Soto.Katie_asgt3-Prefix.pch";
+				INFOPLIST_FILE = "Soto.Katie_asgt3Tests/Soto.Katie_asgt3Tests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		CE41B4D8160AD59C003FE0C0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Soto.Katie_asgt3.app/Soto.Katie_asgt3";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Soto.Katie_asgt3/Soto.Katie_asgt3-Prefix.pch";
+				INFOPLIST_FILE = "Soto.Katie_asgt3Tests/Soto.Katie_asgt3Tests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CE41B497160AD59B003FE0C0 /* Build configuration list for PBXProject "Soto.Katie_asgt3" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE41B4D1160AD59C003FE0C0 /* Debug */,
+				CE41B4D2160AD59C003FE0C0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CE41B4D3160AD59C003FE0C0 /* Build configuration list for PBXNativeTarget "Soto.Katie_asgt3" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE41B4D4160AD59C003FE0C0 /* Debug */,
+				CE41B4D5160AD59C003FE0C0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		CE41B4D6160AD59C003FE0C0 /* Build configuration list for PBXNativeTarget "Soto.Katie_asgt3Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE41B4D7160AD59C003FE0C0 /* Debug */,
+				CE41B4D8160AD59C003FE0C0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CE41B494160AD59B003FE0C0 /* Project object */;
+}
