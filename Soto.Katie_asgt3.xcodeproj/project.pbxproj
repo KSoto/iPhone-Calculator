@@ -21,6 +21,7 @@
 		CE41B4C5160AD59C003FE0C0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE41B4A3160AD59B003FE0C0 /* Foundation.framework */; };
 		CE41B4CD160AD59C003FE0C0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE41B4CB160AD59C003FE0C0 /* InfoPlist.strings */; };
 		CE41B4D0160AD59C003FE0C0 /* Soto_Katie_asgt3Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = CE41B4CF160AD59C003FE0C0 /* Soto_Katie_asgt3Tests.m */; };
+		CE41B4EA160FEA6F003FE0C0 /* calcBG.png in Resources */ = {isa = PBXBuildFile; fileRef = CE41B4E9160FEA6F003FE0C0 /* calcBG.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		CE41B4CC160AD59C003FE0C0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CE41B4CE160AD59C003FE0C0 /* Soto_Katie_asgt3Tests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Soto_Katie_asgt3Tests.h; sourceTree = "<group>"; };
 		CE41B4CF160AD59C003FE0C0 /* Soto_Katie_asgt3Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Soto_Katie_asgt3Tests.m; sourceTree = "<group>"; };
+		CE41B4E9160FEA6F003FE0C0 /* calcBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calcBG.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 		CE41B492160AD59B003FE0C0 = {
 			isa = PBXGroup;
 			children = (
+				CE41B4E9160FEA6F003FE0C0 /* calcBG.png */,
 				CE41B4A7160AD59B003FE0C0 /* Soto.Katie_asgt3 */,
 				CE41B4C8160AD59C003FE0C0 /* Soto.Katie_asgt3Tests */,
 				CE41B4A0160AD59B003FE0C0 /* Frameworks */,
@@ -228,6 +231,7 @@
 				CE41B4AC160AD59B003FE0C0 /* InfoPlist.strings in Resources */,
 				CE41B4B5160AD59B003FE0C0 /* MainStoryboard_iPhone.storyboard in Resources */,
 				CE41B4B8160AD59B003FE0C0 /* MainStoryboard_iPad.storyboard in Resources */,
+				CE41B4EA160FEA6F003FE0C0 /* calcBG.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -448,6 +452,7 @@
 				CE41B4D5160AD59C003FE0C0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CE41B4D6160AD59C003FE0C0 /* Build configuration list for PBXNativeTarget "Soto.Katie_asgt3Tests" */ = {
 			isa = XCConfigurationList;
@@ -456,6 +461,7 @@
 				CE41B4D8160AD59C003FE0C0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
