@@ -39,6 +39,24 @@
 
 -(IBAction)n1_action :(UIButton*)sender
 {
+    NSLog(@"1... this is waiting operand: |%f|", waitingOperand);
+    
+    //if the first operand has NOT been set, set it:
+    if(waitingOperand == NAN)
+    {
+        waitingOperand = 1;
+        
+    //if the first operand HAS been set, set the second operand:
+    }else if(waitingOperand != NAN)
+    {
+        incomingOperand = 1;
+    }
+    
+    else
+    {
+        NSLog(@"ERROR: waitingOperand has neither been set nor reset.");
+        
+    }
     [self doCalculations];
 }
 
@@ -109,6 +127,9 @@
 
 -(IBAction)addition_action :(UIButton*)sender
 {
+    //replace whatever operator was there with this one.
+    //allows for the LAST operator pressed to be the one that is used.
+    waitingOperation = '+';
     [self doCalculations];
 }
 
@@ -145,7 +166,6 @@
 //after any button gets pushed to do the calculations.
 -(void)doCalculations
 {
-    NSLog(@"\nI am here");
     NSLog(@"\nwaitingOperand: %f\nwaitingOperation: %c\nincomingOperand: %f", waitingOperand, waitingOperation, incomingOperand);
     
     //if all variables are set...
