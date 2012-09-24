@@ -30,6 +30,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="n1_action:" destination="2" eventType="touchUpInside" id="DuZ-MT-vUU"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5ho-A9-qSN">
                                 <rect key="frame" x="98" y="305" width="63" height="38"/>
@@ -43,6 +46,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="n2_action:" destination="2" eventType="touchUpInside" id="LvU-6m-YHt"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1am-m8-kPT">
                                 <rect key="frame" x="169" y="305" width="63" height="38"/>
@@ -56,6 +62,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="n3_action:" destination="2" eventType="touchUpInside" id="Kn1-hp-H0y"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gms-VQ-crt">
                                 <rect key="frame" x="27" y="259" width="63" height="38"/>
@@ -69,6 +78,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="n4_action:" destination="2" eventType="touchUpInside" id="TXx-KT-eCL"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="QRZ-68-b9Z">
                                 <rect key="frame" x="98" y="259" width="63" height="38"/>
@@ -82,6 +94,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="n5_action:" destination="2" eventType="touchUpInside" id="ZGJ-k9-Jnm"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="y6N-Nd-Pys">
                                 <rect key="frame" x="169" y="259" width="63" height="38"/>
@@ -95,6 +110,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="n6_action:" destination="2" eventType="touchUpInside" id="hKE-HH-jDv"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="V4F-fW-oEi">
                                 <rect key="frame" x="240" y="259" width="63" height="38"/>
@@ -108,6 +126,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="subtract_action:" destination="2" eventType="touchUpInside" id="CtT-ps-Vtn"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ODu-Hs-0Ux">
                                 <rect key="frame" x="27" y="213" width="63" height="38"/>
@@ -121,6 +142,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="n7_action:" destination="2" eventType="touchUpInside" id="p1v-rd-D0c"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="rLf-Nd-TNq">
                                 <rect key="frame" x="98" y="213" width="63" height="38"/>
@@ -134,6 +158,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="n8_action:" destination="2" eventType="touchUpInside" id="0DZ-Se-7oO"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="o5X-J8-Qo3">
                                 <rect key="frame" x="169" y="213" width="63" height="38"/>
@@ -147,6 +174,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="n9_action:" destination="2" eventType="touchUpInside" id="o3z-fC-CiK"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="eFx-Kw-1iQ">
                                 <rect key="frame" x="240" y="305" width="63" height="84"/>
@@ -160,6 +190,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="equal_action:" destination="2" eventType="touchUpInside" id="Ih2-DI-d0b"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="w0O-Pv-4wM">
                                 <rect key="frame" x="98" y="351" width="63" height="38"/>
@@ -173,6 +206,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="n0_action:" destination="2" eventType="touchUpInside" id="8UY-vC-PA1"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="C4d-Ei-vk9">
                                 <rect key="frame" x="169" y="351" width="63" height="38"/>
@@ -186,6 +222,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="decimal_action:" destination="2" eventType="touchUpInside" id="3Pe-9Q-41q"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="cAF-Ht-HBp">
                                 <rect key="frame" x="240" y="213" width="63" height="38"/>
@@ -199,6 +238,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="addition_action:" destination="2" eventType="touchUpInside" id="eSZ-cS-lIA"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="50G-Rf-2sQ">
                                 <rect key="frame" x="169" y="167" width="63" height="38"/>
@@ -212,6 +254,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="multiply_action:" destination="2" eventType="touchUpInside" id="7sp-Xb-iSH"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ak9-oW-03f">
                                 <rect key="frame" x="240" y="167" width="63" height="38"/>
@@ -225,6 +270,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="division_action:" destination="2" eventType="touchUpInside" id="9R1-Ri-Nji"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="wak-pi-y8T">
                                 <rect key="frame" x="27" y="351" width="63" height="38"/>
@@ -238,6 +286,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="neg_pos_action:" destination="2" eventType="touchUpInside" id="G9f-NG-LDA"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="OQv-tu-Hhq">
                                 <rect key="frame" x="98" y="167" width="63" height="38"/>
@@ -251,6 +302,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="root_action:" destination="2" eventType="touchUpInside" id="FTV-9E-q3B"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="QXA-cn-tzf">
                                 <rect key="frame" x="27" y="167" width="63" height="38"/>
@@ -264,6 +318,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="clear_action:" destination="2" eventType="touchUpInside" id="3cX-mI-xUd"/>
+                                </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="4ov-zc-gqZ">
                                 <rect key="frame" x="61" y="51" width="234" height="71"/>
@@ -284,6 +341,29 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="_addition_button" destination="cAF-Ht-HBp" id="wNj-9R-jw6"/>
+                        <outlet property="_clear_button" destination="QXA-cn-tzf" id="8ie-Ha-n5L"/>
+                        <outlet property="_decimal_button" destination="C4d-Ei-vk9" id="949-1m-KDB"/>
+                        <outlet property="_division_button" destination="ak9-oW-03f" id="lVp-ZY-6dc"/>
+                        <outlet property="_equal_button" destination="eFx-Kw-1iQ" id="4IS-W9-MYT"/>
+                        <outlet property="_multipy_button" destination="50G-Rf-2sQ" id="qZi-fO-STu"/>
+                        <outlet property="_n0_button" destination="w0O-Pv-4wM" id="EXG-6p-MYw"/>
+                        <outlet property="_n1_button" destination="Xdt-HM-jDC" id="U5f-nH-leL"/>
+                        <outlet property="_n2_button" destination="5ho-A9-qSN" id="iaD-zB-xgp"/>
+                        <outlet property="_n3_button" destination="1am-m8-kPT" id="Y1y-FU-WbN"/>
+                        <outlet property="_n4_button" destination="gms-VQ-crt" id="wKd-e3-FUn"/>
+                        <outlet property="_n5_button" destination="QRZ-68-b9Z" id="9fa-nP-mPM"/>
+                        <outlet property="_n6_button" destination="y6N-Nd-Pys" id="zDI-rx-NH7"/>
+                        <outlet property="_n7_button" destination="ODu-Hs-0Ux" id="u3g-en-ohG"/>
+                        <outlet property="_n8_button" destination="rLf-Nd-TNq" id="p64-3p-Ja1"/>
+                        <outlet property="_n9_button" destination="o5X-J8-Qo3" id="1sD-es-itI"/>
+                        <outlet property="_neg_pos_button" destination="wak-pi-y8T" id="KRu-iM-5ag"/>
+                        <outlet property="_operandLabel" destination="4ov-zc-gqZ" id="AMn-iL-c8r"/>
+                        <outlet property="_operationLabel" destination="usH-ia-3BY" id="Gb3-Wm-C98"/>
+                        <outlet property="_root_button" destination="OQv-tu-Hhq" id="0fR-AW-13R"/>
+                        <outlet property="_subtract_button" destination="V4F-fW-oEi" id="FNZ-Fd-KfG"/>
+                    </connections>
                 </viewController>
             </objects>
         </scene>
@@ -294,6 +374,33 @@
     <classes>
         <class className="ViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="decimal_action:" candidateClass="UIButton"/>
+                <relationship kind="action" name="n1_action:" candidateClass="UIButton"/>
+                <relationship kind="action" name="n4_action:" candidateClass="UIButton"/>
+                <relationship kind="action" name="n6_action:" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="_addition_button" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="_clear_button" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="_decimal_button" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="_division_button" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="_equal_button" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="_multipy_button" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="_n0_button" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="_n1_button" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="_n2_button" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="_n3_button" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="_n4_button" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="_n5_button" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="_n6_button" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="_n7_button" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="_n8_button" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="_n9_button" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="_neg_pos_button" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="_operandLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="_operationLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="_root_button" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="_subtract_button" candidateClass="UIButton"/>
+            </relationships>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
