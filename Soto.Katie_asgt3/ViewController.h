@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController <UITextFieldDelegate>
+@interface ViewController : UIViewController 
 {
+    double waitingOperand;
+    char waitingOperation;
+    double incomingOperand;
     
 @private
     //label that will display the operation (+, -, etc.) aligned left
@@ -37,6 +40,8 @@
     IBOutlet UIButton* _multipy_button;
     IBOutlet UIButton* _root_button;
     IBOutlet UIButton* _clear_button;
+    
+
 }
 
 @property (nonatomic, retain) UILabel* operationLabel;
@@ -82,5 +87,6 @@
 -(IBAction)root_action :(UIButton*)sender;
 -(IBAction)clear_action :(UIButton*)sender;
 
+-(void) doCalculations;
 
 @end

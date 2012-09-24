@@ -37,100 +37,125 @@
 @synthesize root_button = _root_button;
 @synthesize clear_button = _clear_button;
 
-
-
 -(IBAction)n1_action :(UIButton*)sender
 {
-    
+    [self doCalculations];
 }
 
 -(IBAction)n2_action :(UIButton*)sender
 {
-    
+    [self doCalculations];
 }
 
 -(IBAction)n3_action :(UIButton*)sender
 {
-    
+    [self doCalculations];
 }
 
 -(IBAction)n4_action :(UIButton*)sender
 {
-    
+    [self doCalculations];
 }
 
 -(IBAction)n5_action :(UIButton*)sender
 {
-    
+    [self doCalculations];
 }
 
 -(IBAction)n6_action :(UIButton*)sender
 {
-    
+    [self doCalculations];
 }
 
 -(IBAction)n7_action :(UIButton*)sender
 {
-    
+    [self doCalculations];
 }
 
 -(IBAction)n8_action :(UIButton*)sender
 {
-    
+    [self doCalculations];
 }
 
 -(IBAction)n9_action :(UIButton*)sender
 {
-    
+    [self doCalculations];
 }
 
 -(IBAction)n0_action :(UIButton*)sender
 {
-    
+    [self doCalculations];
 }
 
 -(IBAction)decimal_action :(UIButton*)sender
 {
-    
+    [self doCalculations];
 }
 
 -(IBAction)neg_pos_action :(UIButton*)sender
 {
-    
+    [self doCalculations];
 }
 
 -(IBAction)equal_action :(UIButton*)sender
 {
-    
+    [self doCalculations];
 }
 
 -(IBAction)subtract_action :(UIButton*)sender
 {
-    
+    [self doCalculations];
 }
 
 -(IBAction)addition_action :(UIButton*)sender
 {
-    
+    [self doCalculations];
 }
 
 -(IBAction)division_action :(UIButton*)sender
 {
-    
+    [self doCalculations];
 }
 
 -(IBAction)multiply_action :(UIButton*)sender
 {
-    
+    [self doCalculations];
 }
 
 -(IBAction)root_action :(UIButton*)sender
 {
-    
+    [self doCalculations];
 }
 
 -(IBAction)clear_action :(UIButton*)sender
 {
+    //reset all the values
+    waitingOperand = NAN;
+    waitingOperation = NAN;
+    incomingOperand = NAN;
+    
+    //clear the text labels
+    self.operandLabel.text = @"";
+    self.operationLabel.text = @"";
+    
+    [self doCalculations];
+}
+
+//rather than having the same logic over and over in all the buttons, this method gets called
+//after any button gets pushed to do the calculations.
+-(void)doCalculations
+{
+    NSLog(@"\nI am here");
+    NSLog(@"\nwaitingOperand: %f\nwaitingOperation: %c\nincomingOperand: %f", waitingOperand, waitingOperation, incomingOperand);
+    
+    //if all variables are set...
+    if((waitingOperand != NAN)&&(waitingOperation != NAN)&&(incomingOperand!=NAN))
+    {
+        if(waitingOperation == '+')
+        {
+            self.operandLabel.text = [NSString stringWithFormat:@"%f", (waitingOperand + incomingOperand)];
+        }
+    }
     
 }
 
@@ -139,6 +164,10 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    //initialize variables
+    waitingOperand = NAN;
+    waitingOperation = NAN;
+    incomingOperand = NAN;
 }
 
 - (void)viewDidUnload
