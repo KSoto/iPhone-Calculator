@@ -239,7 +239,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="addition_action:" destination="2" eventType="touchUpInside" id="eSZ-cS-lIA"/>
+                                    <action selector="addition_action:" destination="2" eventType="touchUpInside" id="VQW-ib-2D6"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="50G-Rf-2sQ">
@@ -342,7 +342,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="_addition_button" destination="cAF-Ht-HBp" id="wNj-9R-jw6"/>
+                        <outlet property="_addition_button" destination="cAF-Ht-HBp" id="yMd-1Y-U1O"/>
                         <outlet property="_clear_button" destination="QXA-cn-tzf" id="8ie-Ha-n5L"/>
                         <outlet property="_decimal_button" destination="C4d-Ei-vk9" id="949-1m-KDB"/>
                         <outlet property="_division_button" destination="ak9-oW-03f" id="lVp-ZY-6dc"/>
@@ -366,6 +366,7 @@
                     </connections>
                 </viewController>
             </objects>
+            <point key="canvasLocation" x="-240" y="143"/>
         </scene>
     </scenes>
     <resources>
@@ -375,10 +376,25 @@
         <class className="ViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
             <relationships>
+                <relationship kind="action" name="addition_action:" candidateClass="UIButton"/>
+                <relationship kind="action" name="clear_action:" candidateClass="UIButton"/>
                 <relationship kind="action" name="decimal_action:" candidateClass="UIButton"/>
+                <relationship kind="action" name="division_action:" candidateClass="UIButton"/>
+                <relationship kind="action" name="equal_action:" candidateClass="UIButton"/>
+                <relationship kind="action" name="multiply_action:" candidateClass="UIButton"/>
+                <relationship kind="action" name="n0_action:" candidateClass="UIButton"/>
                 <relationship kind="action" name="n1_action:" candidateClass="UIButton"/>
+                <relationship kind="action" name="n2_action:" candidateClass="UIButton"/>
+                <relationship kind="action" name="n3_action:" candidateClass="UIButton"/>
                 <relationship kind="action" name="n4_action:" candidateClass="UIButton"/>
+                <relationship kind="action" name="n5_action:" candidateClass="UIButton"/>
                 <relationship kind="action" name="n6_action:" candidateClass="UIButton"/>
+                <relationship kind="action" name="n7_action:" candidateClass="UIButton"/>
+                <relationship kind="action" name="n8_action:" candidateClass="UIButton"/>
+                <relationship kind="action" name="n9_action:" candidateClass="UIButton"/>
+                <relationship kind="action" name="neg_pos_action:" candidateClass="UIButton"/>
+                <relationship kind="action" name="root_action:" candidateClass="UIButton"/>
+                <relationship kind="action" name="subtract_action:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="_addition_button" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="_clear_button" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="_decimal_button" candidateClass="UIButton"/>

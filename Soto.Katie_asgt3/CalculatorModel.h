@@ -14,14 +14,12 @@
     char waitingOperation;
     NSNumber* incomingOperand;
     NSNumber* result;
-    NSMutableString* labelString;
 }
 
 @property (assign) NSNumber* waitingOperand;
 @property (assign) char waitingOperation;
 @property (assign) NSNumber* incomingOperand;
 @property (assign) NSNumber* result;
-@property (assign) NSMutableString* labelString;
 
 -(void) doCalculations;
 

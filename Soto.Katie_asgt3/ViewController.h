@@ -11,11 +11,6 @@
 
 @interface ViewController : UIViewController 
 {
-    
-    NSNumber* waitingOperand;
-    char waitingOperation;
-    NSNumber* incomingOperand;
-    NSNumber* result;
     NSMutableString* labelString;
     
 @private
