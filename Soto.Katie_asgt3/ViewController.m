@@ -11,7 +11,9 @@
  2) Whenever any of the preceeding buttons are pressed, they are simply APPENDED to the
     current value of the label (so pressing 2, then ., then 1, then 3, will update the
     label to be 2.13)
- 
+ 3) When an Operator button is pressed (+, -, =, /, *, square root), the number generated
+    from the user's input in steps 1 and 2 are given to the model, and the operation is 
+    given to the model.
  */
 
 #include <math.h> //for isnan()
@@ -22,6 +24,9 @@
 @end
 
 @implementation ViewController
+
+//create getters and setters for all our properties:
+@synthesize cModel = _cModel;
 
 @synthesize operationLabel = _operationLabel;
 @synthesize operandLabel = _operandLabel;
@@ -45,6 +50,18 @@
 @synthesize multipy_button = _multipy_button;
 @synthesize root_button = _root_button;
 @synthesize clear_button = _clear_button;
+
+//if "cModel" is a null pointer, we need to initalize it
+-(CalculatorModel*) cModel
+{
+    if(_cModel == nil)
+    {
+        _cModel = [[CalculatorModel alloc] init];
+        
+    }
+    return _cModel;
+}
+
 
 /***********ADD DATA************************************
 Add Data:
@@ -207,12 +224,12 @@ Add Data:
 
 -(IBAction)equal_action :(UIButton*)sender
 {
-    [self doCalculations];
+    
 }
 
 -(IBAction)subtract_action :(UIButton*)sender
 {
-    [self doCalculations];
+    
 }
 
 -(IBAction)addition_action :(UIButton*)sender
@@ -221,47 +238,55 @@ Add Data:
     //let's first check that the first operand is NOT empty (4 + ...)
     //waitingOperand = [NSNumber self.operandLabel.text];
     
-    if(waitingOperand==nil)
+    if(labelString==nil)
     {
-        //no first operand
+        //no text in the label, so no numbers added so far
         NSLog(@"ERROR: You pressed + before you entered any numbers! Enter a number first!");
         
-    }else if(waitingOperand != nil)
+    }else if(labelString!=nil)
     {
-        //there IS a first operand, so everything is ok so far.
-        //let's get the number that they just entered, which is in the label
-        NSLog(@"First number i");
+        //there is some data in the label
+        if(self.cModel.waitingOperand == nil)
+        {
+            //there IS NOT a first operand, so everything is ok so far.
+            //let's get the number that they just entered, which is in the label
+            //and give it to the model.
+            self.cModel.waitingOperand = (NSNumber*)self.operandLabel.text;
+            //replace whatever operator was there with this one.
+            //allows for the LAST operator pressed to be the one that is used.
+            self.cModel.waitingOperation = '+';
+        }else if(self.cModel.waitingOperand != nil)
+        {
+            //there IS a first operand, so let's set the next one.
+            self.cModel.waitingOperand = (NSNumber*)self.operandLabel.text;
+            self.cModel.waitingOperation = '+';
+        }else
+        {
+            NSLog(@"\nERROR: waitingOperand is neither nil nor not nil");
+        }
         
+    }else
+    {
+        NSLog(@"\nERROR: Label is neither nil nor not nil.");
     }
     
-    //replace whatever operator was there with this one.
-    //allows for the LAST operator pressed to be the one that is used.
-    waitingOperation = '+';
-    [self doCalculations];
+    [self.cModel doCalculations ];
+     
 }
 
 -(IBAction)division_action :(UIButton*)sender
 {
-    //replace whatever operator was there with this one.
-    //allows for the LAST operator pressed to be the one that is used.
-    waitingOperation = '/';
-    [self doCalculations];
+
 }
 
 -(IBAction)multiply_action :(UIButton*)sender
 {
-    //replace whatever operator was there with this one.
-    //allows for the LAST operator pressed to be the one that is used.
-    waitingOperation = '*';
-    [self doCalculations];
+
 }
 
 -(IBAction)root_action :(UIButton*)sender
 {
-    //replace whatever operator was there with this one.
-    //allows for the LAST operator pressed to be the one that is used.
-    waitingOperation = 'r';
-    [self doCalculations];
+
 }
 
 -(IBAction)clear_action :(UIButton*)sender
@@ -275,31 +300,6 @@ Add Data:
     //clear the text labels
     self.operandLabel.text = @"";
     self.operationLabel.text = @"";
-    
-    [self doCalculations];
-}
-
-//rather than having the same logic over and over in all the buttons, this method gets called
-//after any button gets pushed to do the calculations.
--(void)doCalculations
-{
-    NSLog(@"\nwaitingOperand: %@\nwaitingOperation: %c\nincomingOperand: %@", waitingOperand, waitingOperation, incomingOperand);
-    
-    //if all variables are set...
-    if((waitingOperand != nil)&&(waitingOperation != NAN)&&(incomingOperand != nil))
-    {
-        NSLog(@"\nAll variables are set");
-        if(waitingOperation == '+')
-        {
-            //self.operandLabel.text = [NSString stringWithFormat:@"%@", (waitingOperand + incomingOperand)];
-        }else if(waitingOperation == '.')
-        {
-            //result = waitingOperand +
-        }
-    }else{
-        
-        NSLog(@"\nnot all variables are set");
-    }
     
 }
 
@@ -315,6 +315,7 @@ Add Data:
     labelString = [NSMutableString string];
 }
 
+//******XCODE GENERATED******
 - (void)viewDidUnload
 {
     [super viewDidUnload];

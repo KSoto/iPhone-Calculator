@@ -7,18 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CalculatorModel.h"
 
 @interface ViewController : UIViewController 
 {
+    
     NSNumber* waitingOperand;
     char waitingOperation;
     NSNumber* incomingOperand;
     NSNumber* result;
-    bool doneEnteringData;
     NSMutableString* labelString;
-    //NSString *labelString;
     
 @private
+    CalculatorModel* _cModel;
+    
     //label that will display the operation (+, -, etc.) aligned left
     IBOutlet UILabel* _operationLabel;
     //label that will display the operand (1, 5, etc.) aligned right
@@ -47,7 +49,7 @@
     
 
 }
-
+@property (nonatomic, retain) CalculatorModel* cModel;
 @property (nonatomic, retain) UILabel* operationLabel;
 @property (nonatomic, retain) UILabel* operandLabel;
 
@@ -90,7 +92,5 @@
 -(IBAction)multiply_action :(UIButton*)sender;
 -(IBAction)root_action :(UIButton*)sender;
 -(IBAction)clear_action :(UIButton*)sender;
-
--(void) doCalculations;
 
 @end
