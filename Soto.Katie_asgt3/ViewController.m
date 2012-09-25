@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 Katie Soto. All rights reserved.
 //
 
+#include <math.h> //for isnan()
 #import "ViewController.h"
 
 @interface ViewController ()
@@ -39,75 +40,103 @@
 
 -(IBAction)n1_action :(UIButton*)sender
 {
-    NSLog(@"1... this is waiting operand: |%f|", waitingOperand);
+    //get the text currently in the label
+    [labelString appendFormat:@"1"];
     
-    //if the first operand has NOT been set, set it:
-    if(waitingOperand == NAN)
-    {
-        waitingOperand = 1;
-        
-    //if the first operand HAS been set, set the second operand:
-    }else if(waitingOperand != NAN)
-    {
-        incomingOperand = 1;
-    }
-    
-    else
-    {
-        NSLog(@"ERROR: waitingOperand has neither been set nor reset.");
-        
-    }
-    [self doCalculations];
+    //add it to the label
+    self.operandLabel.text = labelString;
+   
 }
 
 -(IBAction)n2_action :(UIButton*)sender
 {
-    [self doCalculations];
+    //get the text currently in the label
+    [labelString appendFormat:@"2"];
+    
+    //add it to the label
+    self.operandLabel.text = labelString;
 }
 
 -(IBAction)n3_action :(UIButton*)sender
 {
-    [self doCalculations];
+    //get the text currently in the label
+    [labelString appendFormat:@"3"];
+    
+    //add it to the label
+    self.operandLabel.text = labelString;
 }
 
 -(IBAction)n4_action :(UIButton*)sender
 {
-    [self doCalculations];
+    //get the text currently in the label
+    [labelString appendFormat:@"4"];
+    
+    //add it to the label
+    self.operandLabel.text = labelString;
 }
 
 -(IBAction)n5_action :(UIButton*)sender
 {
-    [self doCalculations];
+    //get the text currently in the label
+    [labelString appendFormat:@"5"];
+    
+    //add it to the label
+    self.operandLabel.text = labelString;
 }
 
 -(IBAction)n6_action :(UIButton*)sender
 {
-    [self doCalculations];
+    //get the text currently in the label
+    [labelString appendFormat:@"6"];
+    
+    //add it to the label
+    self.operandLabel.text = labelString;
 }
 
 -(IBAction)n7_action :(UIButton*)sender
 {
-    [self doCalculations];
+    //get the text currently in the label
+    [labelString appendFormat:@"7"];
+    
+    //add it to the label
+    self.operandLabel.text = labelString;
 }
 
 -(IBAction)n8_action :(UIButton*)sender
 {
-    [self doCalculations];
+    //get the text currently in the label
+    [labelString appendFormat:@"8"];
+    
+    //add it to the label
+    self.operandLabel.text = labelString;
 }
 
 -(IBAction)n9_action :(UIButton*)sender
 {
-    [self doCalculations];
+    //get the text currently in the label
+    [labelString appendFormat:@"9"];
+    
+    //add it to the label
+    self.operandLabel.text = labelString;
 }
 
 -(IBAction)n0_action :(UIButton*)sender
 {
-    [self doCalculations];
+    //get the text currently in the label
+    [labelString appendFormat:@"0"];
+    
+    //add it to the label
+    self.operandLabel.text = labelString;
 }
 
 -(IBAction)decimal_action :(UIButton*)sender
 {
-    [self doCalculations];
+    //get the text currently in the label
+    [labelString appendFormat:@"."];
+    
+    //add it to the label
+    self.operandLabel.text = labelString;
+    
 }
 
 -(IBAction)neg_pos_action :(UIButton*)sender
@@ -127,6 +156,23 @@
 
 -(IBAction)addition_action :(UIButton*)sender
 {
+    //if you just pressed "+", you must be done entering the first number.
+    //let's first check that the first operand is NOT empty (4 + ...)
+    //waitingOperand = [NSNumber self.operandLabel.text];
+    
+    if(waitingOperand==nil)
+    {
+        //no first operand
+        NSLog(@"ERROR: You pressed + before you entered any numbers! Enter a number first!");
+        
+    }else if(waitingOperand != nil)
+    {
+        //there IS a first operand, so everything is ok so far.
+        //let's get the number that they just entered, which is in the label
+        NSLog(@"First number i");
+        
+    }
+    
     //replace whatever operator was there with this one.
     //allows for the LAST operator pressed to be the one that is used.
     waitingOperation = '+';
@@ -135,25 +181,35 @@
 
 -(IBAction)division_action :(UIButton*)sender
 {
+    //replace whatever operator was there with this one.
+    //allows for the LAST operator pressed to be the one that is used.
+    waitingOperation = '/';
     [self doCalculations];
 }
 
 -(IBAction)multiply_action :(UIButton*)sender
 {
+    //replace whatever operator was there with this one.
+    //allows for the LAST operator pressed to be the one that is used.
+    waitingOperation = '*';
     [self doCalculations];
 }
 
 -(IBAction)root_action :(UIButton*)sender
 {
+    //replace whatever operator was there with this one.
+    //allows for the LAST operator pressed to be the one that is used.
+    waitingOperation = 'r';
     [self doCalculations];
 }
 
 -(IBAction)clear_action :(UIButton*)sender
 {
     //reset all the values
-    waitingOperand = NAN;
+    waitingOperand = nil;
     waitingOperation = NAN;
-    incomingOperand = NAN;
+    incomingOperand = nil;
+    labelString = [NSMutableString string];
     
     //clear the text labels
     self.operandLabel.text = @"";
@@ -166,15 +222,22 @@
 //after any button gets pushed to do the calculations.
 -(void)doCalculations
 {
-    NSLog(@"\nwaitingOperand: %f\nwaitingOperation: %c\nincomingOperand: %f", waitingOperand, waitingOperation, incomingOperand);
+    NSLog(@"\nwaitingOperand: %@\nwaitingOperation: %c\nincomingOperand: %@", waitingOperand, waitingOperation, incomingOperand);
     
     //if all variables are set...
-    if((waitingOperand != NAN)&&(waitingOperation != NAN)&&(incomingOperand!=NAN))
+    if((waitingOperand != nil)&&(waitingOperation != NAN)&&(incomingOperand != nil))
     {
+        NSLog(@"\nAll variables are set");
         if(waitingOperation == '+')
         {
-            self.operandLabel.text = [NSString stringWithFormat:@"%f", (waitingOperand + incomingOperand)];
+            //self.operandLabel.text = [NSString stringWithFormat:@"%@", (waitingOperand + incomingOperand)];
+        }else if(waitingOperation == '.')
+        {
+            //result = waitingOperand +
         }
+    }else{
+        
+        NSLog(@"\nnot all variables are set");
     }
     
 }
@@ -185,9 +248,10 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     //initialize variables
-    waitingOperand = NAN;
+    waitingOperand = nil;
     waitingOperation = NAN;
-    incomingOperand = NAN;
+    incomingOperand = nil;
+    labelString = [NSMutableString string];
 }
 
 - (void)viewDidUnload

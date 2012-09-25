@@ -10,9 +10,13 @@
 
 @interface ViewController : UIViewController 
 {
-    double waitingOperand;
+    NSNumber* waitingOperand;
     char waitingOperation;
-    double incomingOperand;
+    NSNumber* incomingOperand;
+    NSNumber* result;
+    bool doneEnteringData;
+    NSMutableString* labelString;
+    //NSString *labelString;
     
 @private
     //label that will display the operation (+, -, etc.) aligned left
