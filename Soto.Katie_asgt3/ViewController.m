@@ -71,7 +71,7 @@ Add Data:
 -(IBAction)n1_action :(UIButton*)sender
 {
     //clear the operationLabel
-    self.operationLabel.text =@"";
+    self.operationLabel.text =nil;
     
     //get the text currently in the label
     [labelString appendFormat:@"1"];
@@ -84,7 +84,7 @@ Add Data:
 -(IBAction)n2_action :(UIButton*)sender
 {
     //clear the operationLabel
-    self.operationLabel.text =@"";
+    self.operationLabel.text =nil;
     
     //get the text currently in the label
     [labelString appendFormat:@"2"];
@@ -96,7 +96,7 @@ Add Data:
 -(IBAction)n3_action :(UIButton*)sender
 {
     //clear the operationLabel
-    self.operationLabel.text =@"";
+    self.operationLabel.text =nil;
     
     //get the text currently in the label
     [labelString appendFormat:@"3"];
@@ -108,7 +108,7 @@ Add Data:
 -(IBAction)n4_action :(UIButton*)sender
 {
     //clear the operationLabel
-    self.operationLabel.text =@"";
+    self.operationLabel.text =nil;
     
     //get the text currently in the label
     [labelString appendFormat:@"4"];
@@ -120,7 +120,7 @@ Add Data:
 -(IBAction)n5_action :(UIButton*)sender
 {
     //clear the operationLabel
-    self.operationLabel.text =@"";
+    self.operationLabel.text =nil;
     
     //get the text currently in the label
     [labelString appendFormat:@"5"];
@@ -132,7 +132,7 @@ Add Data:
 -(IBAction)n6_action :(UIButton*)sender
 {
     //clear the operationLabel
-    self.operationLabel.text =@"";
+    self.operationLabel.text =nil;
     
     //get the text currently in the label
     [labelString appendFormat:@"6"];
@@ -144,7 +144,7 @@ Add Data:
 -(IBAction)n7_action :(UIButton*)sender
 {
     //clear the operationLabel
-    self.operationLabel.text =@"";
+    self.operationLabel.text =nil;
     
     //get the text currently in the label
     [labelString appendFormat:@"7"];
@@ -156,7 +156,7 @@ Add Data:
 -(IBAction)n8_action :(UIButton*)sender
 {
     //clear the operationLabel
-    self.operationLabel.text =@"";
+    self.operationLabel.text =nil;
     
     //get the text currently in the label
     [labelString appendFormat:@"8"];
@@ -168,7 +168,7 @@ Add Data:
 -(IBAction)n9_action :(UIButton*)sender
 {
     //clear the operationLabel
-    self.operationLabel.text =@"";
+    self.operationLabel.text =nil;
     
     //get the text currently in the label
     [labelString appendFormat:@"9"];
@@ -180,7 +180,7 @@ Add Data:
 -(IBAction)n0_action :(UIButton*)sender
 {
     //clear the operationLabel
-    self.operationLabel.text =@"";
+    self.operationLabel.text =nil;
     
     //get the text currently in the label
     [labelString appendFormat:@"0"];
@@ -193,7 +193,7 @@ Add Data:
 {
 //*****TODO: if there is no number, start with "0." instead of "."
     //clear the operationLabel
-    self.operationLabel.text =@"";
+    self.operationLabel.text =nil;
     
     //first search if there is already a decimal in the number / label:
     if([labelString rangeOfString:@"."].location == NSNotFound)
@@ -216,7 +216,7 @@ Add Data:
 -(IBAction)neg_pos_action :(UIButton*)sender
 {
     //clear the operationLabel
-    self.operationLabel.text =@"";
+    self.operationLabel.text =nil;
     
     //the +/- button can be pressed at any time while entering the number,
     //making it positive or negative.
@@ -227,7 +227,7 @@ Add Data:
     tempString = (NSMutableString*)self.operandLabel.text;
     
     //now re-initialize the label, so we can start fresh by adding (or removing) the "-"
-    self.operandLabel.text = @"";
+    self.operandLabel.text = nil;
     labelString = [NSMutableString string];
     
     if([tempString hasPrefix:@"-"])
@@ -274,13 +274,12 @@ Add Data:
     labelString = [NSMutableString string];
     
     //let's first check that the first operand is NOT empty (4 + ...)
-//*******TODO: the "==nil" does not work
-    if(self.operandLabel.text==nil)
+    if([self.operandLabel.text length] <= 0)
     {
         //no text in the label, so no numbers added so far
         NSLog(@"\nERROR: You pressed + before you entered any numbers! Enter a number first!");
         
-    }else if(self.operandLabel.text!=nil)
+    }else if([self.operandLabel.text length] > 0)
     {
         //there is some data in the label
         if(self.cModel.waitingOperand == nil)
@@ -291,7 +290,7 @@ Add Data:
             self.cModel.waitingOperand = (NSNumber*)self.operandLabel.text;
             
             //now let's clear that label, we gave it to the model so we don't need it anymore
-            self.operandLabel.text = @"";
+            self.operandLabel.text = nil;
             
             //now let's update the operation label to display "+", just for looks
             self.operationLabel.text =@"+";
@@ -306,7 +305,7 @@ Add Data:
             self.cModel.incomingOperand = (NSNumber*)self.operandLabel.text;
             
             //now let's clear that label, we gave it to the model so we don't need it anymore
-            self.operandLabel.text = @"";
+            self.operandLabel.text = nil;
             
             //now let's update the operation label to display "+", just for looks
             self.operationLabel.text =@"+";
@@ -350,8 +349,8 @@ Add Data:
     labelString = [NSMutableString string];
     
     //clear the text labels
-    self.operandLabel.text = @"";
-    self.operationLabel.text = @"";
+    self.operandLabel.text = nil;
+    self.operationLabel.text = nil;
     
 }
 

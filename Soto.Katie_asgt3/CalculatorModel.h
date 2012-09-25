@@ -16,10 +16,15 @@
     NSNumber* result;
 }
 
-@property (assign) NSNumber* waitingOperand;
-@property (assign) char waitingOperation;
-@property (assign) NSNumber* incomingOperand;
-@property (assign) NSNumber* result;
+//@property (assign) NSNumber* waitingOperand;
+//@property (assign) char waitingOperation;
+//@property (assign) NSNumber* incomingOperand;
+//@property (assign) NSNumber* result;
+@property (nonatomic, retain) NSNumber* waitingOperand;
+@property (assign)  char waitingOperation;
+@property (nonatomic, retain)  NSNumber* incomingOperand;
+@property (nonatomic, retain)  NSNumber* result;
+
 
 -(void) doCalculations;
 

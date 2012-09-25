@@ -10,8 +10,10 @@
 
 @implementation CalculatorModel
 
-//@synthesize waitingOperand;
-
+@synthesize waitingOperand;
+@synthesize waitingOperation;
+@synthesize incomingOperand;
+@synthesize result;
 
 -(void)doCalculations
 {
