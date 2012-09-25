@@ -5,6 +5,14 @@
 //  Created by Lion User on 20/09/2012.
 //  Copyright (c) 2012 Katie Soto. All rights reserved.
 //
+/*
+ Logic:
+ 1) Buttons 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, ., +/- all update the LABEL in the view.
+ 2) Whenever any of the preceeding buttons are pressed, they are simply APPENDED to the
+    current value of the label (so pressing 2, then ., then 1, then 3, will update the
+    label to be 2.13)
+ 
+ */
 
 #include <math.h> //for isnan()
 #import "ViewController.h"
@@ -37,6 +45,11 @@
 @synthesize multipy_button = _multipy_button;
 @synthesize root_button = _root_button;
 @synthesize clear_button = _clear_button;
+
+/***********ADD DATA************************************
+Add Data:
+ -pressing 0, 1, 2... +/- or . will update the View's label.
+*/
 
 -(IBAction)n1_action :(UIButton*)sender
 {
@@ -131,18 +144,66 @@
 
 -(IBAction)decimal_action :(UIButton*)sender
 {
-    //get the text currently in the label
-    [labelString appendFormat:@"."];
+//*****TODO: if there is no number, start with "0." instead of "."
     
-    //add it to the label
-    self.operandLabel.text = labelString;
+    //first search if there is already a decimal in the number / label:
+    if([labelString rangeOfString:@"."].location == NSNotFound)
+    {
+        //if there is NOT a decimal, then it is safe to add it:
+        [labelString appendFormat:@"."];
+        
+        //add it to the label
+        self.operandLabel.text = labelString;
+    }else if([labelString rangeOfString:@"."].location != NSNotFound)
+    {
+        NSLog(@"\nWarning: A decimal already exists in the number, no additional decimal has been added.");
+    }else{
+        NSLog(@"\nERROR: Decimal neither found nor not found");
+    }
+
     
 }
 
 -(IBAction)neg_pos_action :(UIButton*)sender
 {
-    [self doCalculations];
+    //the +/- button can be pressed at any time while entering the number,
+    //making it positive or negative.
+    
+    //first get the current number (if there is one) from the label,
+    //and store it in a (temporary) string:
+    NSMutableString* tempString;
+    tempString = (NSMutableString*)self.operandLabel.text;
+    
+    //now re-initialize the label, so we can start fresh by adding (or removing) the "-"
+    self.operandLabel.text = @"";
+    labelString = [NSMutableString string];
+    
+    if([tempString hasPrefix:@"-"])
+    {
+        //Number was already negative (started with "-") so now we need to remove the "-" to make it positive:
+        tempString = (NSMutableString*)[tempString stringByReplacingOccurrencesOfString:@"-" withString:@""];
+    }else if(![tempString hasPrefix:@"-"])
+    {
+        //add "-" to the beginning, making it negative
+        [labelString appendFormat:@"-"];
+    }else{
+        NSLog(@"\nERROR: negative symbol was neither found nor not found");
+    }
+    
+    //now append the rest of the number that was initially there:
+    [labelString appendFormat:tempString];
+    
+    //add it to/update the label
+    self.operandLabel.text = labelString;
+    
 }
+
+/***********OPERATIONS************************************
+ OPERATIONS:
+ -pressing +, -, =... will tell the controller that the user is done entering the
+  first operand, and wants to move on.
+ -the Controller then tells the model what the first operand is, and what the operation is.
+ */
 
 -(IBAction)equal_action :(UIButton*)sender
 {
