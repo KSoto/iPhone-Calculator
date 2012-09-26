@@ -46,13 +46,37 @@
             
         }else if(self.firstWaitingOperation == '-')
         {
+            //subtract the two numbers, put the result in waitingOperand, reset incomingOperand, put
+            //the waiting operation in the firstOperation slot, and reset the secondOperation slot.
+            self.waitingOperand = [NSNumber numberWithFloat:([self.waitingOperand floatValue] - [self.incomingOperand floatValue])];
+            self.incomingOperand = nil;
+            self.firstWaitingOperation = self.secondWaitingOperation;
+            self.secondWaitingOperation = '\0';
+            
+            NSLog(@"\nfirstWaitingOperation: %c\nsecondWaitingOperation: %c\nwaitingOperand: %@\nincommingOperand: %@", self.firstWaitingOperation, self.secondWaitingOperation, self.waitingOperand, self.incomingOperand);
             
         }else if(self.firstWaitingOperation == '/')
         {
             
+            //divide the two numbers, put the result in waitingOperand, reset incomingOperand, put
+            //the waiting operation in the firstOperation slot, and reset the secondOperation slot.
+            self.waitingOperand = [NSNumber numberWithFloat:([self.waitingOperand floatValue] / [self.incomingOperand floatValue])];
+            self.incomingOperand = nil;
+            self.firstWaitingOperation = self.secondWaitingOperation;
+            self.secondWaitingOperation = '\0';
+            
+            NSLog(@"\nfirstWaitingOperation: %c\nsecondWaitingOperation: %c\nwaitingOperand: %@\nincommingOperand: %@", self.firstWaitingOperation, self.secondWaitingOperation, self.waitingOperand, self.incomingOperand);
+            
         }else if(self.firstWaitingOperation == 'x')
         {
+            //multiply the two numbers, put the result in waitingOperand, reset incomingOperand, put
+            //the waiting operation in the firstOperation slot, and reset the secondOperation slot.
+            self.waitingOperand = [NSNumber numberWithFloat:([self.waitingOperand floatValue] * [self.incomingOperand floatValue])];
+            self.incomingOperand = nil;
+            self.firstWaitingOperation = self.secondWaitingOperation;
+            self.secondWaitingOperation = '\0';
             
+            NSLog(@"\nfirstWaitingOperation: %c\nsecondWaitingOperation: %c\nwaitingOperand: %@\nincommingOperand: %@", self.firstWaitingOperation, self.secondWaitingOperation, self.waitingOperand, self.incomingOperand);
         }
     }
 
