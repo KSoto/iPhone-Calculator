@@ -259,11 +259,67 @@ Add Data:
 
 -(IBAction)equal_action :(UIButton*)sender
 {
+//special order of operations
+[self.cModel doCalculations ];
     
 }
 
 -(IBAction)subtract_action :(UIButton*)sender
 {
+   
+    //if you just pressed "-", you must be done entering the first number.
+    //done building a string, clear it
+    labelString = [NSMutableString string];
+    
+    //let's first check that the first operand is NOT empty (4 - ...)
+    if([self.operandLabel.text length] <= 0)
+    {
+        //no text in the label, so no numbers added so far
+        NSLog(@"\nERROR: You pressed - before you entered any numbers! Enter a number first!");
+        
+    }else if([self.operandLabel.text length] > 0)
+    {
+        //there is some data in the label
+        if(self.cModel.waitingOperand == nil)
+        {
+            //there IS NOT a first operand, so everything is ok so far.
+            //let's get the number that they just entered, which is in the label
+            //and give it to the model.
+            self.cModel.waitingOperand = (NSNumber*)self.operandLabel.text;
+            
+            //now let's clear that label, we gave it to the model so we don't need it anymore
+            self.operandLabel.text = nil;
+            
+            //now let's update the operation label to display "-", just for looks
+            self.operationLabel.text =@"-";
+            
+            //replace whatever operator was there in the model with this one.
+            //allows for the LAST operator pressed to be the one that is used.
+            self.cModel.waitingOperation = '-';
+            
+        }else if(self.cModel.waitingOperand != nil)
+        {
+            //there IS a first operand, so let's set the next one.
+            self.cModel.incomingOperand = (NSNumber*)self.operandLabel.text;
+            
+            //now let's clear that label, we gave it to the model so we don't need it anymore
+            self.operandLabel.text = nil;
+            
+            //now let's update the operation label to display "-", just for looks
+            self.operationLabel.text =@"-";
+            
+            self.cModel.waitingOperation = '-';
+        }else
+        {
+            NSLog(@"\nERROR: waitingOperand is neither nil nor not nil");
+        }
+        
+    }else
+    {
+        NSLog(@"\nERROR: Label is neither nil nor not nil.");
+    }
+    
+    [self.cModel doCalculations ];
     
 }
 
@@ -327,17 +383,122 @@ Add Data:
 
 -(IBAction)division_action :(UIButton*)sender
 {
-
-}
+    //if you just pressed "/", you must be done entering the first number.
+    //done building a string, clear it
+    labelString = [NSMutableString string];
+    
+    //let's first check that the first operand is NOT empty (4 / ...)
+    if([self.operandLabel.text length] <= 0)
+    {
+        //no text in the label, so no numbers added so far
+        NSLog(@"\nERROR: You pressed / before you entered any numbers! Enter a number first!");
+        
+    }else if([self.operandLabel.text length] > 0)
+    {
+        //there is some data in the label
+        if(self.cModel.waitingOperand == nil)
+        {
+            //there IS NOT a first operand, so everything is ok so far.
+            //let's get the number that they just entered, which is in the label
+            //and give it to the model.
+            self.cModel.waitingOperand = (NSNumber*)self.operandLabel.text;
+            
+            //now let's clear that label, we gave it to the model so we don't need it anymore
+            self.operandLabel.text = nil;
+            
+            //now let's update the operation label to display "/", just for looks
+            self.operationLabel.text =@"/";
+            
+            //replace whatever operator was there in the model with this one.
+            //allows for the LAST operator pressed to be the one that is used.
+            self.cModel.waitingOperation = '/';
+            
+        }else if(self.cModel.waitingOperand != nil)
+        {
+            //there IS a first operand, so let's set the next one.
+            self.cModel.incomingOperand = (NSNumber*)self.operandLabel.text;
+            
+            //now let's clear that label, we gave it to the model so we don't need it anymore
+            self.operandLabel.text = nil;
+            
+            //now let's update the operation label to display "/", just for looks
+            self.operationLabel.text =@"/";
+            
+            self.cModel.waitingOperation = '/';
+        }else
+        {
+            NSLog(@"\nERROR: waitingOperand is neither nil nor not nil");
+        }
+        
+    }else
+    {
+        NSLog(@"\nERROR: Label is neither nil nor not nil.");
+    }
+    
+    [self.cModel doCalculations ];}
 
 -(IBAction)multiply_action :(UIButton*)sender
 {
-
+    //if you just pressed "x", you must be done entering the first number.
+    //done building a string, clear it
+    labelString = [NSMutableString string];
+    
+    //let's first check that the first operand is NOT empty (4 x ...)
+    if([self.operandLabel.text length] <= 0)
+    {
+        //no text in the label, so no numbers added so far
+        NSLog(@"\nERROR: You pressed x before you entered any numbers! Enter a number first!");
+        
+    }else if([self.operandLabel.text length] > 0)
+    {
+        //there is some data in the label
+        if(self.cModel.waitingOperand == nil)
+        {
+            //there IS NOT a first operand, so everything is ok so far.
+            //let's get the number that they just entered, which is in the label
+            //and give it to the model.
+            self.cModel.waitingOperand = (NSNumber*)self.operandLabel.text;
+            
+            //now let's clear that label, we gave it to the model so we don't need it anymore
+            self.operandLabel.text = nil;
+            
+            //now let's update the operation label to display "x", just for looks
+            self.operationLabel.text =@"x";
+            
+            //replace whatever operator was there in the model with this one.
+            //allows for the LAST operator pressed to be the one that is used.
+            self.cModel.waitingOperation = 'x';
+            
+        }else if(self.cModel.waitingOperand != nil)
+        {
+            //there IS a first operand, so let's set the next one.
+            self.cModel.incomingOperand = (NSNumber*)self.operandLabel.text;
+            
+            //now let's clear that label, we gave it to the model so we don't need it anymore
+            self.operandLabel.text = nil;
+            
+            //now let's update the operation label to display "x", just for looks
+            self.operationLabel.text =@"x";
+            
+            self.cModel.waitingOperation = 'x';
+        }else
+        {
+            NSLog(@"\nERROR: waitingOperand is neither nil nor not nil");
+        }
+        
+    }else
+    {
+        NSLog(@"\nERROR: Label is neither nil nor not nil.");
+    }
+    
+    [self.cModel doCalculations ];
 }
 
 -(IBAction)root_action :(UIButton*)sender
 {
-
+//√
+//special order of operations
+    
 }
 
 -(IBAction)clear_action :(UIButton*)sender
