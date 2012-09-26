@@ -271,7 +271,7 @@ Add Data:
     //done building a string, clear it
     labelString = [NSMutableString string];
     
-    //let's first check that the first operand is NOT empty (4 - ...)
+    //let's first check that the first operand is NOT empty (4 x ...)
     if([self.operandLabel.text length] <= 0)
     {
         //no text in the label, so no numbers added so far
@@ -295,7 +295,16 @@ Add Data:
             
             //replace whatever operator was there in the model with this one.
             //allows for the LAST operator pressed to be the one that is used.
-            self.cModel.waitingOperation = '-';
+            //this shouldn't happen, but let's just make sure that firstWaitingOperation is NAN...
+            if(self.cModel.firstWaitingOperation != NAN)
+            {
+                //then set the next one:
+                self.cModel.secondWaitingOperation = '-';
+                
+            }else{
+                //first waiting operation is free, set it.
+                self.cModel.firstWaitingOperation = '-';
+            }
             
         }else if(self.cModel.waitingOperand != nil)
         {
@@ -308,7 +317,17 @@ Add Data:
             //now let's update the operation label to display "-", just for looks
             self.operationLabel.text =@"-";
             
-            self.cModel.waitingOperation = '-';
+            //check to see if the firstOperation is already filled
+            //(this will happen in a long string of operations)
+            //for example, (4 + 3 -...) will have waitingOperand, incomingOperand, and firstOperation already filled.
+            if(self.cModel.firstWaitingOperation != NAN)
+            {
+                //then set the next one:
+                self.cModel.secondWaitingOperation = '-';
+            }else{
+                //first waiting operation is free, set it.
+                self.cModel.firstWaitingOperation = '-';
+            }
         }else
         {
             NSLog(@"\nERROR: waitingOperand is neither nil nor not nil");
@@ -353,7 +372,16 @@ Add Data:
             
             //replace whatever operator was there in the model with this one.
             //allows for the LAST operator pressed to be the one that is used.
-            self.cModel.waitingOperation = '+';
+            //this shouldn't happen, but let's just make sure that firstWaitingOperation is NAN...
+            if(self.cModel.firstWaitingOperation != NAN)
+            {
+                //then set the next one:
+                self.cModel.secondWaitingOperation = '+';
+                
+            }else{
+                //first waiting operation is free, set it.
+                self.cModel.firstWaitingOperation = '+';
+            }
             
         }else if(self.cModel.waitingOperand != nil)
         {
@@ -366,7 +394,17 @@ Add Data:
             //now let's update the operation label to display "+", just for looks
             self.operationLabel.text =@"+";
             
-            self.cModel.waitingOperation = '+';
+            //check to see if the firstOperation is already filled
+            //(this will happen in a long string of operations)
+            //for example, (4 + 3 -...) will have waitingOperand, incomingOperand, and firstOperation already filled.
+            if(self.cModel.firstWaitingOperation != NAN)
+            {
+                //then set the next one:
+                self.cModel.secondWaitingOperation = '+';
+            }else{
+                //first waiting operation is free, set it.
+                self.cModel.firstWaitingOperation = '+';
+            }
         }else
         {
             NSLog(@"\nERROR: waitingOperand is neither nil nor not nil");
@@ -411,7 +449,16 @@ Add Data:
             
             //replace whatever operator was there in the model with this one.
             //allows for the LAST operator pressed to be the one that is used.
-            self.cModel.waitingOperation = '/';
+            //this shouldn't happen, but let's just make sure that firstWaitingOperation is NAN...
+            if(self.cModel.firstWaitingOperation != NAN)
+            {
+                //then set the next one:
+                self.cModel.secondWaitingOperation = '/';
+                
+            }else{
+                //first waiting operation is free, set it.
+                self.cModel.firstWaitingOperation = '/';
+            }
             
         }else if(self.cModel.waitingOperand != nil)
         {
@@ -421,10 +468,20 @@ Add Data:
             //now let's clear that label, we gave it to the model so we don't need it anymore
             self.operandLabel.text = nil;
             
-            //now let's update the operation label to display "/", just for looks
+            //now let's update the operation label to display "x", just for looks
             self.operationLabel.text =@"/";
             
-            self.cModel.waitingOperation = '/';
+            //check to see if the firstOperation is already filled
+            //(this will happen in a long string of operations)
+            //for example, (4 + 3 -...) will have waitingOperand, incomingOperand, and firstOperation already filled.
+            if(self.cModel.firstWaitingOperation != NAN)
+            {
+                //then set the next one:
+                self.cModel.secondWaitingOperation = '/';
+            }else{
+                //first waiting operation is free, set it.
+                self.cModel.firstWaitingOperation = '/';
+            }
         }else
         {
             NSLog(@"\nERROR: waitingOperand is neither nil nor not nil");
@@ -435,7 +492,9 @@ Add Data:
         NSLog(@"\nERROR: Label is neither nil nor not nil.");
     }
     
-    [self.cModel doCalculations ];}
+    [self.cModel doCalculations ];
+
+}
 
 -(IBAction)multiply_action :(UIButton*)sender
 {
@@ -467,7 +526,16 @@ Add Data:
             
             //replace whatever operator was there in the model with this one.
             //allows for the LAST operator pressed to be the one that is used.
-            self.cModel.waitingOperation = 'x';
+            //this shouldn't happen, but let's just make sure that firstWaitingOperation is NAN...
+            if(self.cModel.firstWaitingOperation != NAN)
+            {
+                //then set the next one:
+                self.cModel.secondWaitingOperation = 'x';
+                
+            }else{
+                //first waiting operation is free, set it.
+                self.cModel.firstWaitingOperation = 'x';
+            }
             
         }else if(self.cModel.waitingOperand != nil)
         {
@@ -480,7 +548,17 @@ Add Data:
             //now let's update the operation label to display "x", just for looks
             self.operationLabel.text =@"x";
             
-            self.cModel.waitingOperation = 'x';
+            //check to see if the firstOperation is already filled
+            //(this will happen in a long string of operations)
+            //for example, (4 + 3 -...) will have waitingOperand, incomingOperand, and firstOperation already filled.
+            if(self.cModel.firstWaitingOperation != NAN)
+            {
+                //then set the next one:
+                self.cModel.secondWaitingOperation = 'x';
+            }else{
+                //first waiting operation is free, set it.
+                self.cModel.firstWaitingOperation = 'x';
+            }  
         }else
         {
             NSLog(@"\nERROR: waitingOperand is neither nil nor not nil");
@@ -505,7 +583,8 @@ Add Data:
 {
     //reset all the values
     self.cModel.waitingOperand = nil;
-    self.cModel.waitingOperation = NAN;
+    self.cModel.firstWaitingOperation = NAN;
+    self.cModel.secondWaitingOperation = NAN;
     self.cModel.incomingOperand = nil;
     labelString = [NSMutableString string];
     
@@ -522,7 +601,8 @@ Add Data:
 	// Do any additional setup after loading the view, typically from a nib.
     //initialize variables
     self.cModel.waitingOperand = nil;
-    self.cModel.waitingOperation = NAN;
+    self.cModel.firstWaitingOperation = NAN;
+    self.cModel.secondWaitingOperation = NAN;
     self.cModel.incomingOperand = nil;
     labelString = [NSMutableString string];
 }
