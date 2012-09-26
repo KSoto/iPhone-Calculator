@@ -342,6 +342,8 @@ Add Data:
     
     self.operandLabel.text = [NSString stringWithFormat:@"%@", self.cModel.waitingOperand];
     
+    continueOp=true;
+    
 }
 
 -(IBAction)subtract_action :(UIButton*)sender
@@ -351,14 +353,16 @@ Add Data:
     //done building a string, clear it
     labelString = [NSMutableString string];
     
-    //let's first check that the first operand is NOT empty (4 x ...)
+    //let's first check that the first operand is NOT empty (4 - ...)
     if([self.operandLabel.text length] <= 0)
     {
         //no text in the label, so no numbers added so far
         NSLog(@"\nERROR: You pressed - before you entered any numbers! Enter a number first!");
         
-    }else if([self.operandLabel.text length] > 0)
+    }else if(([self.operandLabel.text length] > 0)&(continueOp==false))
     {
+        //if "continueOp" is false, it means that = did not just run, so continue normally:
+        
         //there is some data in the label
         if(self.cModel.waitingOperand == nil)
         {
@@ -419,6 +423,70 @@ Add Data:
             NSLog(@"\nERROR: waitingOperand is neither nil nor not nil");
         }
         
+    }else if(([self.operandLabel.text length] > 0)&(continueOp==true))
+    {
+        //now set it back
+        continueOp=false;
+        
+        //there is some data in the label
+        if(self.cModel.waitingOperand == nil)
+        {
+            //there IS NOT a first operand, so everything is ok so far.
+            //let's get the number that they just entered, which is in the label
+            //and give it to the model.
+            self.cModel.waitingOperand = (NSNumber*)self.operandLabel.text;
+            
+            //now let's clear that label, we gave it to the model so we don't need it anymore
+            self.operandLabel.text = nil;
+            
+            //now let's update the operation label to display "-", just for looks
+            self.operationLabel.text =@"-";
+            
+            //replace whatever operator was there in the model with this one.
+            //allows for the LAST operator pressed to be the one that is used.
+            //this shouldn't happen, but let's just make sure that firstWaitingOperation is '\0'...
+            if(self.cModel.firstWaitingOperation != '\0')
+            {
+                //then set the next one:
+                self.cModel.secondWaitingOperation = '-';
+                
+            }else if(self.cModel.firstWaitingOperation == '\0'){
+                //first waiting operation is free, set it.
+                self.cModel.firstWaitingOperation = '-';
+            }else
+            {
+                NSLog(@"\nERROR: firstWaitingOperation is neither '\0' nor not '\0'.");
+            }
+            
+        }else if(self.cModel.waitingOperand != nil)
+        {
+            //there IS a first operand, which is this one, so don't replace it
+            //self.cModel.incomingOperand = (NSNumber*)self.operandLabel.text;
+            
+            //now let's clear that label, we gave it to the model so we don't need it anymore
+            self.operandLabel.text = nil;
+            
+            //now let's update the operation label to display "-", just for looks
+            self.operationLabel.text =@"-";
+            
+            //check to see if the firstOperation is already filled
+            //(this will happen in a long string of operations)
+            //for example, (4 + 3 -...) will have waitingOperand, incomingOperand, and firstOperation already filled.
+            if(self.cModel.firstWaitingOperation != '\0')
+            {
+                //then set the next one:
+                self.cModel.secondWaitingOperation = '-';
+            }else if(self.cModel.firstWaitingOperation == '\0'){
+                //first waiting operation is free, set it.
+                self.cModel.firstWaitingOperation = '-';
+            }else
+            {
+                NSLog(@"\nERROR: firstWaitingOperation is neither '\0' nor not '\0'.");
+            }
+        }else
+        {
+            NSLog(@"\nERROR: waitingOperand is neither nil nor not nil");
+        }
     }else
     {
         NSLog(@"\nERROR: Label is neither nil nor not nil.");
@@ -426,7 +494,7 @@ Add Data:
     
     [self.cModel doCalculations ];
     
-    self.operandLabel.text = [NSString stringWithFormat:@"%@", self.cModel.waitingOperand];    
+    self.operandLabel.text = [NSString stringWithFormat:@"%@", self.cModel.waitingOperand];
 }
 
 -(IBAction)addition_action :(UIButton*)sender
@@ -441,8 +509,10 @@ Add Data:
         //no text in the label, so no numbers added so far
         NSLog(@"\nERROR: You pressed + before you entered any numbers! Enter a number first!");
         
-    }else if([self.operandLabel.text length] > 0)
+    }else if(([self.operandLabel.text length] > 0)&(continueOp==false))
     {
+        //if "continueOp" is false, it means that = did not just run, so continue normally:
+        
         //there is some data in the label
         if(self.cModel.waitingOperand == nil)
         {
@@ -503,6 +573,70 @@ Add Data:
             NSLog(@"\nERROR: waitingOperand is neither nil nor not nil");
         }
         
+    }else if(([self.operandLabel.text length] > 0)&(continueOp==true))
+    {
+        //now set it back
+        continueOp=false;
+        
+        //there is some data in the label
+        if(self.cModel.waitingOperand == nil)
+        {
+            //there IS NOT a first operand, so everything is ok so far.
+            //let's get the number that they just entered, which is in the label
+            //and give it to the model.
+            self.cModel.waitingOperand = (NSNumber*)self.operandLabel.text;
+            
+            //now let's clear that label, we gave it to the model so we don't need it anymore
+            self.operandLabel.text = nil;
+            
+            //now let's update the operation label to display "+", just for looks
+            self.operationLabel.text =@"+";
+            
+            //replace whatever operator was there in the model with this one.
+            //allows for the LAST operator pressed to be the one that is used.
+            //this shouldn't happen, but let's just make sure that firstWaitingOperation is '\0'...
+            if(self.cModel.firstWaitingOperation != '\0')
+            {
+                //then set the next one:
+                self.cModel.secondWaitingOperation = '+';
+                
+            }else if(self.cModel.firstWaitingOperation == '\0'){
+                //first waiting operation is free, set it.
+                self.cModel.firstWaitingOperation = '+';
+            }else
+            {
+                NSLog(@"\nERROR: firstWaitingOperation is neither '\0' nor not '\0'.");
+            }
+            
+        }else if(self.cModel.waitingOperand != nil)
+        {
+            //there IS a first operand, which is this one, so don't replace it
+            //self.cModel.incomingOperand = (NSNumber*)self.operandLabel.text;
+            
+            //now let's clear that label, we gave it to the model so we don't need it anymore
+            self.operandLabel.text = nil;
+            
+            //now let's update the operation label to display "+", just for looks
+            self.operationLabel.text =@"+";
+            
+            //check to see if the firstOperation is already filled
+            //(this will happen in a long string of operations)
+            //for example, (4 + 3 -...) will have waitingOperand, incomingOperand, and firstOperation already filled.
+            if(self.cModel.firstWaitingOperation != '\0')
+            {
+                //then set the next one:
+                self.cModel.secondWaitingOperation = '+';
+            }else if(self.cModel.firstWaitingOperation == '\0'){
+                //first waiting operation is free, set it.
+                self.cModel.firstWaitingOperation = '+';
+            }else
+            {
+                NSLog(@"\nERROR: firstWaitingOperation is neither '\0' nor not '\0'.");
+            }
+        }else
+        {
+            NSLog(@"\nERROR: waitingOperand is neither nil nor not nil");
+        }
     }else
     {
         NSLog(@"\nERROR: Label is neither nil nor not nil.");
@@ -519,14 +653,16 @@ Add Data:
     //done building a string, clear it
     labelString = [NSMutableString string];
     
-    //let's first check that the first operand is NOT empty (4 / ...)
+    //let's first check that the first operand is NOT empty (4 - ...)
     if([self.operandLabel.text length] <= 0)
     {
         //no text in the label, so no numbers added so far
         NSLog(@"\nERROR: You pressed / before you entered any numbers! Enter a number first!");
         
-    }else if([self.operandLabel.text length] > 0)
+    }else if(([self.operandLabel.text length] > 0)&(continueOp==false))
     {
+        //if "continueOp" is false, it means that = did not just run, so continue normally:
+        
         //there is some data in the label
         if(self.cModel.waitingOperand == nil)
         {
@@ -565,7 +701,7 @@ Add Data:
             //now let's clear that label, we gave it to the model so we don't need it anymore
             self.operandLabel.text = nil;
             
-            //now let's update the operation label to display "x", just for looks
+            //now let's update the operation label to display "-", just for looks
             self.operationLabel.text =@"/";
             
             //check to see if the firstOperation is already filled
@@ -587,6 +723,70 @@ Add Data:
             NSLog(@"\nERROR: waitingOperand is neither nil nor not nil");
         }
         
+    }else if(([self.operandLabel.text length] > 0)&(continueOp==true))
+    {
+        //now set it back
+        continueOp=false;
+        
+        //there is some data in the label
+        if(self.cModel.waitingOperand == nil)
+        {
+            //there IS NOT a first operand, so everything is ok so far.
+            //let's get the number that they just entered, which is in the label
+            //and give it to the model.
+            self.cModel.waitingOperand = (NSNumber*)self.operandLabel.text;
+            
+            //now let's clear that label, we gave it to the model so we don't need it anymore
+            self.operandLabel.text = nil;
+            
+            //now let's update the operation label to display "/", just for looks
+            self.operationLabel.text =@"/";
+            
+            //replace whatever operator was there in the model with this one.
+            //allows for the LAST operator pressed to be the one that is used.
+            //this shouldn't happen, but let's just make sure that firstWaitingOperation is '\0'...
+            if(self.cModel.firstWaitingOperation != '\0')
+            {
+                //then set the next one:
+                self.cModel.secondWaitingOperation = '/';
+                
+            }else if(self.cModel.firstWaitingOperation == '\0'){
+                //first waiting operation is free, set it.
+                self.cModel.firstWaitingOperation = '/';
+            }else
+            {
+                NSLog(@"\nERROR: firstWaitingOperation is neither '\0' nor not '\0'.");
+            }
+            
+        }else if(self.cModel.waitingOperand != nil)
+        {
+            //there IS a first operand, which is this one, so don't replace it
+            //self.cModel.incomingOperand = (NSNumber*)self.operandLabel.text;
+            
+            //now let's clear that label, we gave it to the model so we don't need it anymore
+            self.operandLabel.text = nil;
+            
+            //now let's update the operation label to display "/", just for looks
+            self.operationLabel.text =@"/";
+            
+            //check to see if the firstOperation is already filled
+            //(this will happen in a long string of operations)
+            //for example, (4 + 3 -...) will have waitingOperand, incomingOperand, and firstOperation already filled.
+            if(self.cModel.firstWaitingOperation != '\0')
+            {
+                //then set the next one:
+                self.cModel.secondWaitingOperation = '/';
+            }else if(self.cModel.firstWaitingOperation == '\0'){
+                //first waiting operation is free, set it.
+                self.cModel.firstWaitingOperation = '/';
+            }else
+            {
+                NSLog(@"\nERROR: firstWaitingOperation is neither '\0' nor not '\0'.");
+            }
+        }else
+        {
+            NSLog(@"\nERROR: waitingOperand is neither nil nor not nil");
+        }
     }else
     {
         NSLog(@"\nERROR: Label is neither nil nor not nil.");
@@ -603,14 +803,16 @@ Add Data:
     //done building a string, clear it
     labelString = [NSMutableString string];
     
-    //let's first check that the first operand is NOT empty (4 x ...)
+    //let's first check that the first operand is NOT empty (4 - ...)
     if([self.operandLabel.text length] <= 0)
     {
         //no text in the label, so no numbers added so far
         NSLog(@"\nERROR: You pressed x before you entered any numbers! Enter a number first!");
         
-    }else if([self.operandLabel.text length] > 0)
+    }else if(([self.operandLabel.text length] > 0)&(continueOp==false))
     {
+        //if "continueOp" is false, it means that = did not just run, so continue normally:
+        
         //there is some data in the label
         if(self.cModel.waitingOperand == nil)
         {
@@ -671,6 +873,70 @@ Add Data:
             NSLog(@"\nERROR: waitingOperand is neither nil nor not nil");
         }
         
+    }else if(([self.operandLabel.text length] > 0)&(continueOp==true))
+    {
+        //now set it back
+        continueOp=false;
+        
+        //there is some data in the label
+        if(self.cModel.waitingOperand == nil)
+        {
+            //there IS NOT a first operand, so everything is ok so far.
+            //let's get the number that they just entered, which is in the label
+            //and give it to the model.
+            self.cModel.waitingOperand = (NSNumber*)self.operandLabel.text;
+            
+            //now let's clear that label, we gave it to the model so we don't need it anymore
+            self.operandLabel.text = nil;
+            
+            //now let's update the operation label to display "x", just for looks
+            self.operationLabel.text =@"x";
+            
+            //replace whatever operator was there in the model with this one.
+            //allows for the LAST operator pressed to be the one that is used.
+            //this shouldn't happen, but let's just make sure that firstWaitingOperation is '\0'...
+            if(self.cModel.firstWaitingOperation != '\0')
+            {
+                //then set the next one:
+                self.cModel.secondWaitingOperation = 'x';
+                
+            }else if(self.cModel.firstWaitingOperation == '\0'){
+                //first waiting operation is free, set it.
+                self.cModel.firstWaitingOperation = 'x';
+            }else
+            {
+                NSLog(@"\nERROR: firstWaitingOperation is neither '\0' nor not '\0'.");
+            }
+            
+        }else if(self.cModel.waitingOperand != nil)
+        {
+            //there IS a first operand, which is this one, so don't replace it
+            //self.cModel.incomingOperand = (NSNumber*)self.operandLabel.text;
+            
+            //now let's clear that label, we gave it to the model so we don't need it anymore
+            self.operandLabel.text = nil;
+            
+            //now let's update the operation label to display "x", just for looks
+            self.operationLabel.text =@"x";
+            
+            //check to see if the firstOperation is already filled
+            //(this will happen in a long string of operations)
+            //for example, (4 + 3 -...) will have waitingOperand, incomingOperand, and firstOperation already filled.
+            if(self.cModel.firstWaitingOperation != '\0')
+            {
+                //then set the next one:
+                self.cModel.secondWaitingOperation = 'x';
+            }else if(self.cModel.firstWaitingOperation == '\0'){
+                //first waiting operation is free, set it.
+                self.cModel.firstWaitingOperation = 'x';
+            }else
+            {
+                NSLog(@"\nERROR: firstWaitingOperation is neither '\0' nor not '\0'.");
+            }
+        }else
+        {
+            NSLog(@"\nERROR: waitingOperand is neither nil nor not nil");
+        }
     }else
     {
         NSLog(@"\nERROR: Label is neither nil nor not nil.");
@@ -683,8 +949,154 @@ Add Data:
 
 -(IBAction)root_action :(UIButton*)sender
 {
-//√
-//special order of operations
+    //'√' --> 'r'
+    //special order of operations
+    //if you just pressed "√", you must be done entering the first number.
+    //done building a string, clear it
+    labelString = [NSMutableString string];
+    
+    //let's first check that the first operand is NOT empty (4 - ...)
+    if([self.operandLabel.text length] <= 0)
+    {
+        //no text in the label, so no numbers added so far
+        NSLog(@"\nERROR: You pressed √ before you entered any numbers! Enter a number first!");
+        
+    }else if(([self.operandLabel.text length] > 0)&(continueOp==false))
+    {
+        //if "continueOp" is false, it means that = did not just run, so continue normally:
+        
+        //there is some data in the label
+        if(self.cModel.waitingOperand == nil)
+        {
+            //there IS NOT a first operand, so everything is ok so far.
+            //let's get the number that they just entered, which is in the label
+            //and give it to the model.
+            self.cModel.waitingOperand = (NSNumber*)self.operandLabel.text;
+            
+            //now let's clear that label, we gave it to the model so we don't need it anymore
+            self.operandLabel.text = nil;
+            
+            //now let's update the operation label to display "√", just for looks
+            self.operationLabel.text =@"√";
+            
+            //replace whatever operator was there in the model with this one.
+            //allows for the LAST operator pressed to be the one that is used.
+            //this shouldn't happen, but let's just make sure that firstWaitingOperation is '\0'...
+            if(self.cModel.firstWaitingOperation != '\0')
+            {
+                //then set the next one:
+                self.cModel.secondWaitingOperation = 'r';
+                
+            }else if(self.cModel.firstWaitingOperation == '\0'){
+                //first waiting operation is free, set it.
+                self.cModel.firstWaitingOperation = 'r';
+            }else
+            {
+                NSLog(@"\nERROR: firstWaitingOperation is neither '\0' nor not '\0'.");
+            }
+            
+        }else if(self.cModel.waitingOperand != nil)
+        {
+            //there IS a first operand, so let's set the next one.
+            self.cModel.incomingOperand = (NSNumber*)self.operandLabel.text;
+            
+            //now let's clear that label, we gave it to the model so we don't need it anymore
+            self.operandLabel.text = nil;
+            
+            //now let's update the operation label to display "√", just for looks
+            self.operationLabel.text =@"√";
+            
+            //check to see if the firstOperation is already filled
+            //(this will happen in a long string of operations)
+            //for example, (4 + 3 -...) will have waitingOperand, incomingOperand, and firstOperation already filled.
+            if(self.cModel.firstWaitingOperation != '\0')
+            {
+                //then set the next one:
+                self.cModel.secondWaitingOperation = 'r';
+            }else if(self.cModel.firstWaitingOperation == '\0'){
+                //first waiting operation is free, set it.
+                self.cModel.firstWaitingOperation = 'r';
+            }else
+            {
+                NSLog(@"\nERROR: firstWaitingOperation is neither '\0' nor not '\0'.");
+            }
+        }else
+        {
+            NSLog(@"\nERROR: waitingOperand is neither nil nor not nil");
+        }
+        
+    }else if(([self.operandLabel.text length] > 0)&(continueOp==true))
+    {
+        //now set it back
+        continueOp=false;
+        
+        //there is some data in the label
+        if(self.cModel.waitingOperand == nil)
+        {
+            //there IS NOT a first operand, so everything is ok so far.
+            //let's get the number that they just entered, which is in the label
+            //and give it to the model.
+            self.cModel.waitingOperand = (NSNumber*)self.operandLabel.text;
+            
+            //now let's clear that label, we gave it to the model so we don't need it anymore
+            self.operandLabel.text = nil;
+            
+            //now let's update the operation label to display "√", just for looks
+            self.operationLabel.text =@"√";
+            
+            //replace whatever operator was there in the model with this one.
+            //allows for the LAST operator pressed to be the one that is used.
+            //this shouldn't happen, but let's just make sure that firstWaitingOperation is '\0'...
+            if(self.cModel.firstWaitingOperation != '\0')
+            {
+                //then set the next one:
+                self.cModel.secondWaitingOperation = 'r';
+                
+            }else if(self.cModel.firstWaitingOperation == '\0'){
+                //first waiting operation is free, set it.
+                self.cModel.firstWaitingOperation = 'r';
+            }else
+            {
+                NSLog(@"\nERROR: firstWaitingOperation is neither '\0' nor not '\0'.");
+            }
+            
+        }else if(self.cModel.waitingOperand != nil)
+        {
+            //there IS a first operand, which is this one, so don't replace it
+            //self.cModel.incomingOperand = (NSNumber*)self.operandLabel.text;
+            
+            //now let's clear that label, we gave it to the model so we don't need it anymore
+            self.operandLabel.text = nil;
+            
+            //now let's update the operation label to display "√", just for looks
+            self.operationLabel.text =@"√";
+            
+            //check to see if the firstOperation is already filled
+            //(this will happen in a long string of operations)
+            //for example, (4 + 3 -...) will have waitingOperand, incomingOperand, and firstOperation already filled.
+            if(self.cModel.firstWaitingOperation != '\0')
+            {
+                //then set the next one:
+                self.cModel.secondWaitingOperation = 'r';
+            }else if(self.cModel.firstWaitingOperation == '\0'){
+                //first waiting operation is free, set it.
+                self.cModel.firstWaitingOperation = 'r';
+            }else
+            {
+                NSLog(@"\nERROR: firstWaitingOperation is neither '\0' nor not '\0'.");
+            }
+        }else
+        {
+            NSLog(@"\nERROR: waitingOperand is neither nil nor not nil");
+        }
+    }else
+    {
+        NSLog(@"\nERROR: Label is neither nil nor not nil.");
+    }
+    
+    [self.cModel doCalculations ];
+    
+    self.operandLabel.text = [NSString stringWithFormat:@"%@", self.cModel.waitingOperand];
     
 }
 
@@ -701,6 +1113,8 @@ Add Data:
     self.operandLabel.text = nil;
     self.operationLabel.text = nil;
     
+    continueOp = false;
+    
 }
 
 
@@ -714,6 +1128,7 @@ Add Data:
     self.cModel.secondWaitingOperation = '\0';
     self.cModel.incomingOperand = nil;
     labelString = [NSMutableString string];
+    continueOp = false;
 }
 
 //******XCODE GENERATED******

@@ -12,6 +12,7 @@
 @interface ViewController : UIViewController 
 {
     NSMutableString* labelString;
+    bool continueOp;
     
 @private
     CalculatorModel* _cModel;

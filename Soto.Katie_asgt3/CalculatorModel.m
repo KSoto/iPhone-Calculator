@@ -25,7 +25,13 @@
         //nil _ nil
         NSLog(@"\nWARNING: All variables are set to nill, no operations were performed");
         
-    }else if((self.waitingOperand!=nil)&&(self.firstWaitingOperation!='\0')&&(self.incomingOperand!=nil)&&(self.secondWaitingOperation!='\0'))
+    }else if(self.firstWaitingOperation == 'r')
+    {
+        //unable to use '√' for character, says it's too large. SO I'll just use 'r'
+        self.waitingOperand = [NSNumber numberWithDouble:sqrt([self.waitingOperand doubleValue])];
+        
+    }
+    else if((self.waitingOperand!=nil)&&(self.firstWaitingOperation!='\0')&&(self.incomingOperand!=nil)&&(self.secondWaitingOperation!='\0'))
     {
         //ALL variables are NOT NILL:
         //4 + 4 -...
