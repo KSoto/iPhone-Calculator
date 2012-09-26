@@ -28,10 +28,36 @@
     }else if(self.firstWaitingOperation == 'r')
     {
         //unable to use '√' for character, says it's too large. SO I'll just use 'r'
+        NSLog(@"\ntaking the root of... %@", self.waitingOperand);
         self.waitingOperand = [NSNumber numberWithDouble:sqrt([self.waitingOperand doubleValue])];
+
+        self.incomingOperand = nil;
+        if(self.secondWaitingOperation != '=')
+        {
+            //carry the opertaion over, ONLY if it is NOT an = (no need to carry that over)
+            self.firstWaitingOperation = self.secondWaitingOperation;
+        }else if(self.secondWaitingOperation == '='){
+            //else, ignore it, get rid of it, clear it
+            self.firstWaitingOperation = '\0';
+        }
+        self.secondWaitingOperation = '\0';
         
-    }
-    else if((self.waitingOperand!=nil)&&(self.firstWaitingOperation!='\0')&&(self.incomingOperand!=nil)&&(self.secondWaitingOperation!='\0'))
+        NSLog(@"\nfirstWaitingOperation: %c\nsecondWaitingOperation: %c\nwaitingOperand: %@\nincommingOperand: %@", self.firstWaitingOperation, self.secondWaitingOperation, self.waitingOperand, self.incomingOperand);
+        
+    }else if(self.secondWaitingOperation == 'r')
+    {
+        //for situations like:
+        //                           1 + 3 √ =
+        // firstWaitingOperation  =    +   +
+        // secondWaitingOperation =        √
+        // waitingOperand         =    1   1
+        // incomingOperand        =        3
+        
+        //for this, you do the SAME thing (same loop) as below.
+        //so just run the loop below.
+        //HOWEVER, we need to run the above loop again, because '√' will be in the first operand slot, and we need to calculate it.
+        
+    }else if((self.waitingOperand!=nil)&&(self.firstWaitingOperation!='\0')&&(self.incomingOperand!=nil)&&(self.secondWaitingOperation!='\0'))
     {
         //ALL variables are NOT NILL:
         //4 + 4 -...
@@ -116,6 +142,28 @@
     if(self.firstWaitingOperation == '=')
     {
         self.firstWaitingOperation = '\0';
+    }
+    
+    if(self.firstWaitingOperation == 'r')
+    {
+        //unable to use '√' for character, says it's too large. SO I'll just use 'r'
+        self.waitingOperand = [NSNumber numberWithDouble:sqrt([self.waitingOperand doubleValue])];
+        
+        NSLog(@"\n2 taking the root of... %@", self.waitingOperand);
+        
+        self.incomingOperand = nil;
+        if(self.secondWaitingOperation != '=')
+        {
+            //carry the opertaion over, ONLY if it is NOT an = (no need to carry that over)
+            self.firstWaitingOperation = self.secondWaitingOperation;
+        }else if(self.secondWaitingOperation == '='){
+            //else, ignore it, get rid of it, clear it
+            self.firstWaitingOperation = '\0';
+        }
+        self.secondWaitingOperation = '\0';
+        
+        NSLog(@"\nfirstWaitingOperation: %c\nsecondWaitingOperation: %c\nwaitingOperand: %@\nincommingOperand: %@", self.firstWaitingOperation, self.secondWaitingOperation, self.waitingOperand, self.incomingOperand);
+        
     }
 }
 @end

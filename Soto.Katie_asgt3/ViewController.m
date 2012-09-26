@@ -1098,6 +1098,8 @@ Add Data:
     
     self.operandLabel.text = [NSString stringWithFormat:@"%@", self.cModel.waitingOperand];
     
+    continueOp=true;
+    
 }
 
 -(IBAction)clear_action :(UIButton*)sender
