@@ -18,50 +18,42 @@
 
 -(void)doCalculations
 {
-    NSLog(@"\nwaitingOperand: %@\nwaitingOperation: %c\nincomingOperand: %@", self.waitingOperand, self.firstWaitingOperation, self.incomingOperand);
+    NSLog(@"\nfirstWaitingOperation: %c\nsecondWaitingOperation: %c\nwaitingOperand: %@\nincommingOperand: %@", self.firstWaitingOperation, self.secondWaitingOperation, self.waitingOperand, self.incomingOperand);
     
-    if((self.waitingOperand==nil)&&(self.firstWaitingOperation==NAN)&&(self.incomingOperand==nil))
+    if((self.waitingOperand==nil)&&(self.firstWaitingOperation=='\0')&&(self.incomingOperand==nil)&&(self.secondWaitingOperation=='\0'))
     {
         //All variables are nil:
         //nil _ nil
+        NSLog(@"\nWARNING: All variables are set to nill, no operations were performed");
         
-    }else if((self.waitingOperand==nil)&&(self.firstWaitingOperation==NAN)&&(self.incomingOperand!=nil))
-    {
-        //Only the last operand is nil:
-        //nil _ 4
-        
-    }else if((self.waitingOperand==nil)&&(self.firstWaitingOperation!=NAN)&&(self.incomingOperand==nil))
-    {
-        //Only the operation is nil:
-        //nil + nil
-        
-    }else if((self.waitingOperand==nil)&&(self.firstWaitingOperation!=NAN)&&(self.incomingOperand!=nil))
-    {
-        //The first operand only is nil:
-        //nil + 4
-        
-    }else if((self.waitingOperand!=nil)&&(self.firstWaitingOperation==NAN)&&(self.incomingOperand==nil))
-    {
-        //The first operand only is not nil:
-        //4 _ nil
-        
-    }else if((self.waitingOperand!=nil)&&(self.firstWaitingOperation==NAN)&&(self.incomingOperand!=nil))
-    {
-        //The first and last operands are not nil:
-        //1 _ 3
-        
-    }else if((self.waitingOperand!=nil)&&(self.firstWaitingOperation!=NAN)&&(self.incomingOperand==nil))
-    {
-        //The last operand only is nil:
-        //1 + _
-        
-    }else if((self.waitingOperand!=nil)&&(self.firstWaitingOperation!=NAN)&&(self.incomingOperand!=nil))
+    }else if((self.waitingOperand!=nil)&&(self.firstWaitingOperation!='\0')&&(self.incomingOperand!=nil)&&(self.secondWaitingOperation!='\0'))
     {
         //ALL variables are NOT NILL:
-        //4 + 4
+        //4 + 4 -...
+        //GREAT let's get calculating...
         
-    }else{
-        NSLog(@"\nERROR: all variables are neither nil nor not nil.");
+        //let's take waitingOperand, firstWaitingOperation, and incomingOperand and do the operation.
+        if(self.firstWaitingOperation == '+')
+        {
+            //add the two numbers, put the result in waitingOperand, reset incomingOperand, put
+            //the waiting operation in the firstOperation slot, and reset the secondOperation slot.
+            self.waitingOperand = [NSNumber numberWithFloat:([self.waitingOperand floatValue] + [self.incomingOperand floatValue])];
+            self.incomingOperand = nil;
+            self.firstWaitingOperation = self.secondWaitingOperation;
+            self.secondWaitingOperation = '\0';
+            
+             NSLog(@"\nfirstWaitingOperation: %c\nsecondWaitingOperation: %c\nwaitingOperand: %@\nincommingOperand: %@", self.firstWaitingOperation, self.secondWaitingOperation, self.waitingOperand, self.incomingOperand);
+            
+        }else if(self.firstWaitingOperation == '-')
+        {
+            
+        }else if(self.firstWaitingOperation == '/')
+        {
+            
+        }else if(self.firstWaitingOperation == 'x')
+        {
+            
+        }
     }
 
 }

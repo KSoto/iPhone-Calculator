@@ -16,7 +16,7 @@
     given to the model.
  */
 
-#include <math.h> //for isnan()
+#include <math.h> //for isnan
 #import "ViewController.h"
 
 @interface ViewController ()
@@ -295,15 +295,18 @@ Add Data:
             
             //replace whatever operator was there in the model with this one.
             //allows for the LAST operator pressed to be the one that is used.
-            //this shouldn't happen, but let's just make sure that firstWaitingOperation is NAN...
-            if(self.cModel.firstWaitingOperation != NAN)
+            //this shouldn't happen, but let's just make sure that firstWaitingOperation is '\0'...
+            if(self.cModel.firstWaitingOperation != '\0')
             {
                 //then set the next one:
                 self.cModel.secondWaitingOperation = '-';
                 
-            }else{
+            }else if(self.cModel.firstWaitingOperation == '\0'){
                 //first waiting operation is free, set it.
                 self.cModel.firstWaitingOperation = '-';
+            }else
+            {
+                NSLog(@"\nERROR: firstWaitingOperation is neither '\0' nor not '\0'.");
             }
             
         }else if(self.cModel.waitingOperand != nil)
@@ -320,13 +323,16 @@ Add Data:
             //check to see if the firstOperation is already filled
             //(this will happen in a long string of operations)
             //for example, (4 + 3 -...) will have waitingOperand, incomingOperand, and firstOperation already filled.
-            if(self.cModel.firstWaitingOperation != NAN)
+            if(self.cModel.firstWaitingOperation != '\0')
             {
                 //then set the next one:
                 self.cModel.secondWaitingOperation = '-';
-            }else{
+            }else if(self.cModel.firstWaitingOperation == '\0'){
                 //first waiting operation is free, set it.
                 self.cModel.firstWaitingOperation = '-';
+            }else
+            {
+                NSLog(@"\nERROR: firstWaitingOperation is neither '\0' nor not '\0'.");
             }
         }else
         {
@@ -339,6 +345,7 @@ Add Data:
     }
     
     [self.cModel doCalculations ];
+    //self.operandLabel.text = (NSString*)self.cModel.waitingOperand;
     
 }
 
@@ -372,15 +379,18 @@ Add Data:
             
             //replace whatever operator was there in the model with this one.
             //allows for the LAST operator pressed to be the one that is used.
-            //this shouldn't happen, but let's just make sure that firstWaitingOperation is NAN...
-            if(self.cModel.firstWaitingOperation != NAN)
+            //this shouldn't happen, but let's just make sure that firstWaitingOperation is '\0'...
+            if(self.cModel.firstWaitingOperation != '\0')
             {
                 //then set the next one:
                 self.cModel.secondWaitingOperation = '+';
                 
-            }else{
+            }else if(self.cModel.firstWaitingOperation == '\0'){
                 //first waiting operation is free, set it.
                 self.cModel.firstWaitingOperation = '+';
+            }else
+            {
+                NSLog(@"\nERROR: firstWaitingOperation is neither '\0' nor not '\0'.");
             }
             
         }else if(self.cModel.waitingOperand != nil)
@@ -397,13 +407,16 @@ Add Data:
             //check to see if the firstOperation is already filled
             //(this will happen in a long string of operations)
             //for example, (4 + 3 -...) will have waitingOperand, incomingOperand, and firstOperation already filled.
-            if(self.cModel.firstWaitingOperation != NAN)
+            if(self.cModel.firstWaitingOperation != '\0')
             {
                 //then set the next one:
                 self.cModel.secondWaitingOperation = '+';
-            }else{
+            }else if(self.cModel.firstWaitingOperation == '\0'){
                 //first waiting operation is free, set it.
                 self.cModel.firstWaitingOperation = '+';
+            }else
+            {
+                NSLog(@"\nERROR: firstWaitingOperation is neither '\0' nor not '\0'.");
             }
         }else
         {
@@ -416,7 +429,8 @@ Add Data:
     }
     
     [self.cModel doCalculations ];
-     
+    //self.operandLabel.text = (NSString*)self.cModel.waitingOperand;
+    
 }
 
 -(IBAction)division_action :(UIButton*)sender
@@ -449,15 +463,18 @@ Add Data:
             
             //replace whatever operator was there in the model with this one.
             //allows for the LAST operator pressed to be the one that is used.
-            //this shouldn't happen, but let's just make sure that firstWaitingOperation is NAN...
-            if(self.cModel.firstWaitingOperation != NAN)
+            //this shouldn't happen, but let's just make sure that firstWaitingOperation is '\0'...
+            if(self.cModel.firstWaitingOperation != '\0')
             {
                 //then set the next one:
                 self.cModel.secondWaitingOperation = '/';
                 
-            }else{
+            }else if(self.cModel.firstWaitingOperation == '\0'){
                 //first waiting operation is free, set it.
                 self.cModel.firstWaitingOperation = '/';
+            }else
+            {
+                NSLog(@"\nERROR: firstWaitingOperation is neither '\0' nor not '\0'.");
             }
             
         }else if(self.cModel.waitingOperand != nil)
@@ -474,13 +491,16 @@ Add Data:
             //check to see if the firstOperation is already filled
             //(this will happen in a long string of operations)
             //for example, (4 + 3 -...) will have waitingOperand, incomingOperand, and firstOperation already filled.
-            if(self.cModel.firstWaitingOperation != NAN)
+            if(self.cModel.firstWaitingOperation != '\0')
             {
                 //then set the next one:
                 self.cModel.secondWaitingOperation = '/';
-            }else{
+            }else if(self.cModel.firstWaitingOperation == '\0'){
                 //first waiting operation is free, set it.
                 self.cModel.firstWaitingOperation = '/';
+            }else
+            {
+                NSLog(@"\nERROR: firstWaitingOperation is neither '\0' nor not '\0'.");
             }
         }else
         {
@@ -493,7 +513,8 @@ Add Data:
     }
     
     [self.cModel doCalculations ];
-
+    //self.operandLabel.text = (NSString*)self.cModel.waitingOperand;
+    
 }
 
 -(IBAction)multiply_action :(UIButton*)sender
@@ -526,15 +547,18 @@ Add Data:
             
             //replace whatever operator was there in the model with this one.
             //allows for the LAST operator pressed to be the one that is used.
-            //this shouldn't happen, but let's just make sure that firstWaitingOperation is NAN...
-            if(self.cModel.firstWaitingOperation != NAN)
+            //this shouldn't happen, but let's just make sure that firstWaitingOperation is '\0'...
+            if(self.cModel.firstWaitingOperation != '\0')
             {
                 //then set the next one:
                 self.cModel.secondWaitingOperation = 'x';
                 
-            }else{
+            }else if(self.cModel.firstWaitingOperation == '\0'){
                 //first waiting operation is free, set it.
                 self.cModel.firstWaitingOperation = 'x';
+            }else
+            {
+                NSLog(@"\nERROR: firstWaitingOperation is neither '\0' nor not '\0'.");
             }
             
         }else if(self.cModel.waitingOperand != nil)
@@ -551,14 +575,17 @@ Add Data:
             //check to see if the firstOperation is already filled
             //(this will happen in a long string of operations)
             //for example, (4 + 3 -...) will have waitingOperand, incomingOperand, and firstOperation already filled.
-            if(self.cModel.firstWaitingOperation != NAN)
+            if(self.cModel.firstWaitingOperation != '\0')
             {
                 //then set the next one:
                 self.cModel.secondWaitingOperation = 'x';
-            }else{
+            }else if(self.cModel.firstWaitingOperation == '\0'){
                 //first waiting operation is free, set it.
                 self.cModel.firstWaitingOperation = 'x';
-            }  
+            }else
+            {
+                NSLog(@"\nERROR: firstWaitingOperation is neither '\0' nor not '\0'.");
+            }
         }else
         {
             NSLog(@"\nERROR: waitingOperand is neither nil nor not nil");
@@ -570,6 +597,7 @@ Add Data:
     }
     
     [self.cModel doCalculations ];
+    //self.operandLabel.text = (NSString*)self.cModel.waitingOperand;
 }
 
 -(IBAction)root_action :(UIButton*)sender
@@ -583,8 +611,8 @@ Add Data:
 {
     //reset all the values
     self.cModel.waitingOperand = nil;
-    self.cModel.firstWaitingOperation = NAN;
-    self.cModel.secondWaitingOperation = NAN;
+    self.cModel.firstWaitingOperation = '\0';
+    self.cModel.secondWaitingOperation = '\0';
     self.cModel.incomingOperand = nil;
     labelString = [NSMutableString string];
     
@@ -601,8 +629,8 @@ Add Data:
 	// Do any additional setup after loading the view, typically from a nib.
     //initialize variables
     self.cModel.waitingOperand = nil;
-    self.cModel.firstWaitingOperation = NAN;
-    self.cModel.secondWaitingOperation = NAN;
+    self.cModel.firstWaitingOperation = '\0';
+    self.cModel.secondWaitingOperation = '\0';
     self.cModel.incomingOperand = nil;
     labelString = [NSMutableString string];
 }
