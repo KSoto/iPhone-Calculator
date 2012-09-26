@@ -12,8 +12,10 @@
     current value of the label (so pressing 2, then ., then 1, then 3, will update the
     label to be 2.13)
  3) When an Operator button is pressed (+, -, =, /, *, square root), the number generated
-    from the user's input in steps 1 and 2 are given to the model, and the operation is 
+    from the user's input in steps 1 and 2 are given to the MODEL, and the operation is 
     given to the model.
+ 4) the model decides if it has enough information to process a result. If it does, the
+    variables will change, and the cycle continues.
  */
 
 #include <math.h> //for isnan
@@ -259,8 +261,86 @@ Add Data:
 
 -(IBAction)equal_action :(UIButton*)sender
 {
-//special order of operations
-[self.cModel doCalculations ];
+
+    //if you just pressed "=", you must be done entering the first number.
+    //done building a string, clear it
+    labelString = [NSMutableString string];
+    
+    //let's first check that the first operand is NOT empty (4 x ...)
+    if([self.operandLabel.text length] <= 0)
+    {
+        //no text in the label, so no numbers added so far
+        NSLog(@"\nERROR: You pressed = before you entered any numbers! Enter a number first!");
+        
+    }else if([self.operandLabel.text length] > 0)
+    {
+        //there is some data in the label
+        if(self.cModel.waitingOperand == nil)
+        {
+            //there IS NOT a first operand, so everything is ok so far.
+            //let's get the number that they just entered, which is in the label
+            //and give it to the model.
+            self.cModel.waitingOperand = (NSNumber*)self.operandLabel.text;
+            
+            //now let's clear that label, we gave it to the model so we don't need it anymore
+            self.operandLabel.text = nil;
+            
+            //now let's update the operation label to display "=", just for looks
+            self.operationLabel.text =@"=";
+            
+            if(self.cModel.firstWaitingOperation != '\0')
+            {
+                //4 + 3 =
+                self.cModel.secondWaitingOperation = '=';
+            }else if(self.cModel.firstWaitingOperation == '\0'){
+                //4 =
+                //if you only pressed one number, then pressed "=", you just need to display that one number..
+                //there are no operations to perform. So there's nothing to do.
+            }else
+            {
+                NSLog(@"\nERROR: firstWaitingOperation is neither '\0' nor not '\0'.");
+            }
+            
+        }else if(self.cModel.waitingOperand != nil)
+        {
+            //there IS a first operand, so let's set the next one.
+            self.cModel.incomingOperand = (NSNumber*)self.operandLabel.text;
+            
+            //now let's clear that label, we gave it to the model so we don't need it anymore
+            self.operandLabel.text = nil;
+            
+            //now let's update the operation label to display "=", just for looks
+            self.operationLabel.text =@"=";
+            
+            if(self.cModel.firstWaitingOperation != '\0')
+            {
+                //4 + 6 =
+                self.cModel.secondWaitingOperation = '=';
+            }else if(self.cModel.firstWaitingOperation == '\0'){
+                //4 = 6. doesn't make sense. this is where we need to reset things.
+                //we are going to make the LAST number, then number you want to deal
+                //with. meaning if you type 4 = 6 + 1, you'll get 7.
+                self.cModel.waitingOperand = self.cModel.incomingOperand;
+                self.cModel.incomingOperand = nil;
+                self.cModel.firstWaitingOperation = '\0';
+                self.cModel.secondWaitingOperation = '\0';
+            }else
+            {
+                NSLog(@"\nERROR: firstWaitingOperation is neither '\0' nor not '\0'.");
+            }
+        }else
+        {
+            NSLog(@"\nERROR: waitingOperand is neither nil nor not nil");
+        }
+        
+    }else
+    {
+        NSLog(@"\nERROR: Label is neither nil nor not nil.");
+    }
+    
+    [self.cModel doCalculations ];
+    
+    self.operandLabel.text = [NSString stringWithFormat:@"%@", self.cModel.waitingOperand];
     
 }
 
@@ -345,8 +425,8 @@ Add Data:
     }
     
     [self.cModel doCalculations ];
-    //self.operandLabel.text = (NSString*)self.cModel.waitingOperand;
     
+    self.operandLabel.text = [NSString stringWithFormat:@"%@", self.cModel.waitingOperand];    
 }
 
 -(IBAction)addition_action :(UIButton*)sender
@@ -429,8 +509,8 @@ Add Data:
     }
     
     [self.cModel doCalculations ];
-    //self.operandLabel.text = (NSString*)self.cModel.waitingOperand;
     
+    self.operandLabel.text = [NSString stringWithFormat:@"%@", self.cModel.waitingOperand];
 }
 
 -(IBAction)division_action :(UIButton*)sender
@@ -513,8 +593,8 @@ Add Data:
     }
     
     [self.cModel doCalculations ];
-    //self.operandLabel.text = (NSString*)self.cModel.waitingOperand;
     
+    self.operandLabel.text = [NSString stringWithFormat:@"%@", self.cModel.waitingOperand];
 }
 
 -(IBAction)multiply_action :(UIButton*)sender
@@ -597,7 +677,8 @@ Add Data:
     }
     
     [self.cModel doCalculations ];
-    //self.operandLabel.text = (NSString*)self.cModel.waitingOperand;
+    
+    self.operandLabel.text = [NSString stringWithFormat:@"%@", self.cModel.waitingOperand];
 }
 
 -(IBAction)root_action :(UIButton*)sender

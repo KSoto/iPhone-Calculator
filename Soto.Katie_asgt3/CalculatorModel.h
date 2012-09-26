@@ -10,19 +10,16 @@
 
 @interface CalculatorModel : NSObject
 {
-    NSNumber* WaitingOperand;
+    NSNumber* waitingOperand;
     char firstWaitingOperation;
     char secondWaitingOperation;
     NSNumber* incomingOperand;
-    NSNumber* result;
 }
 
 @property (nonatomic, retain) NSNumber* waitingOperand;
 @property (assign)  char firstWaitingOperation;
 @property (assign)  char secondWaitingOperation;
 @property (nonatomic, retain)  NSNumber* incomingOperand;
-@property (nonatomic, retain)  NSNumber* result;
-
 
 -(void) doCalculations;
 

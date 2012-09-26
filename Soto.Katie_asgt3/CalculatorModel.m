@@ -14,7 +14,6 @@
 @synthesize firstWaitingOperation;
 @synthesize secondWaitingOperation;
 @synthesize incomingOperand;
-@synthesize result;
 
 -(void)doCalculations
 {
@@ -39,7 +38,14 @@
             //the waiting operation in the firstOperation slot, and reset the secondOperation slot.
             self.waitingOperand = [NSNumber numberWithFloat:([self.waitingOperand floatValue] + [self.incomingOperand floatValue])];
             self.incomingOperand = nil;
-            self.firstWaitingOperation = self.secondWaitingOperation;
+            if(self.secondWaitingOperation != '=')
+            {
+                //carry the opertaion over, ONLY if it is NOT an = (no need to carry that over
+                self.firstWaitingOperation = self.secondWaitingOperation;
+            }else if(self.secondWaitingOperation == '='){
+                //else, ignore it, get rid of it, clear it
+                self.firstWaitingOperation = '\0';
+            }
             self.secondWaitingOperation = '\0';
             
              NSLog(@"\nfirstWaitingOperation: %c\nsecondWaitingOperation: %c\nwaitingOperand: %@\nincommingOperand: %@", self.firstWaitingOperation, self.secondWaitingOperation, self.waitingOperand, self.incomingOperand);
@@ -50,7 +56,14 @@
             //the waiting operation in the firstOperation slot, and reset the secondOperation slot.
             self.waitingOperand = [NSNumber numberWithFloat:([self.waitingOperand floatValue] - [self.incomingOperand floatValue])];
             self.incomingOperand = nil;
-            self.firstWaitingOperation = self.secondWaitingOperation;
+            if(self.secondWaitingOperation != '=')
+            {
+                //carry the opertaion over, ONLY if it is NOT an = (no need to carry that over
+                self.firstWaitingOperation = self.secondWaitingOperation;
+            }else if(self.secondWaitingOperation == '='){
+                //else, ignore it, get rid of it, clear it
+                self.firstWaitingOperation = '\0';
+            }
             self.secondWaitingOperation = '\0';
             
             NSLog(@"\nfirstWaitingOperation: %c\nsecondWaitingOperation: %c\nwaitingOperand: %@\nincommingOperand: %@", self.firstWaitingOperation, self.secondWaitingOperation, self.waitingOperand, self.incomingOperand);
@@ -62,7 +75,14 @@
             //the waiting operation in the firstOperation slot, and reset the secondOperation slot.
             self.waitingOperand = [NSNumber numberWithFloat:([self.waitingOperand floatValue] / [self.incomingOperand floatValue])];
             self.incomingOperand = nil;
-            self.firstWaitingOperation = self.secondWaitingOperation;
+            if(self.secondWaitingOperation != '=')
+            {
+                //carry the opertaion over, ONLY if it is NOT an = (no need to carry that over
+                self.firstWaitingOperation = self.secondWaitingOperation;
+            }else if(self.secondWaitingOperation == '='){
+                //else, ignore it, get rid of it, clear it
+                self.firstWaitingOperation = '\0';
+            }
             self.secondWaitingOperation = '\0';
             
             NSLog(@"\nfirstWaitingOperation: %c\nsecondWaitingOperation: %c\nwaitingOperand: %@\nincommingOperand: %@", self.firstWaitingOperation, self.secondWaitingOperation, self.waitingOperand, self.incomingOperand);
@@ -73,12 +93,23 @@
             //the waiting operation in the firstOperation slot, and reset the secondOperation slot.
             self.waitingOperand = [NSNumber numberWithFloat:([self.waitingOperand floatValue] * [self.incomingOperand floatValue])];
             self.incomingOperand = nil;
-            self.firstWaitingOperation = self.secondWaitingOperation;
+            if(self.secondWaitingOperation != '=')
+            {
+                //carry the opertaion over, ONLY if it is NOT an = (no need to carry that over
+                self.firstWaitingOperation = self.secondWaitingOperation;
+            }else if(self.secondWaitingOperation == '='){
+                //else, ignore it, get rid of it, clear it
+                self.firstWaitingOperation = '\0';
+            }
             self.secondWaitingOperation = '\0';
             
             NSLog(@"\nfirstWaitingOperation: %c\nsecondWaitingOperation: %c\nwaitingOperand: %@\nincommingOperand: %@", self.firstWaitingOperation, self.secondWaitingOperation, self.waitingOperand, self.incomingOperand);
         }
     }
-
+    //After these loops it's possible that the first operation will be set to "=". We don't want that.
+    if(self.firstWaitingOperation == '=')
+    {
+        self.firstWaitingOperation = '\0';
+    }
 }
 @end
