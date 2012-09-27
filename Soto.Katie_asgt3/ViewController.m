@@ -968,6 +968,7 @@ Add Data:
         //there is some data in the label
         if(self.cModel.waitingOperand == nil)
         {
+            
             //there IS NOT a first operand, so everything is ok so far.
             //let's get the number that they just entered, which is in the label
             //and give it to the model.
@@ -1033,6 +1034,7 @@ Add Data:
         //there is some data in the label
         if(self.cModel.waitingOperand == nil)
         {
+            
             //there IS NOT a first operand, so everything is ok so far.
             //let's get the number that they just entered, which is in the label
             //and give it to the model.
@@ -1097,7 +1099,6 @@ Add Data:
     [self.cModel doCalculations ];
     
     self.operandLabel.text = [NSString stringWithFormat:@"%@", self.cModel.waitingOperand];
-    
     continueOp=true;
     
 }

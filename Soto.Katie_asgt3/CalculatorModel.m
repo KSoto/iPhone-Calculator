@@ -10,25 +10,26 @@
 
 @implementation CalculatorModel
 
-@synthesize waitingOperand;
-@synthesize firstWaitingOperation;
-@synthesize secondWaitingOperation;
-@synthesize incomingOperand;
+//in an example, let's say that you press 4 + 5 - , the following variables will be set as...
+@synthesize waitingOperand;         // 4
+@synthesize firstWaitingOperation;  // +
+@synthesize secondWaitingOperation; // -
+@synthesize incomingOperand;        // 5
 
 -(void)doCalculations
 {
-    NSLog(@"\nfirstWaitingOperation: %c\nsecondWaitingOperation: %c\nwaitingOperand: %@\nincommingOperand: %@", self.firstWaitingOperation, self.secondWaitingOperation, self.waitingOperand, self.incomingOperand);
-    
+
     if((self.waitingOperand==nil)&&(self.firstWaitingOperation=='\0')&&(self.incomingOperand==nil)&&(self.secondWaitingOperation=='\0'))
     {
         //All variables are nil:
         //nil _ nil
         NSLog(@"\nWARNING: All variables are set to nill, no operations were performed");
         
+    //this "r" loop is outside of the all != nil loop BECAUSE square root and one number can be enough to have a result.
+    //for example, 4 + doesn't mean anything, but 9 √ does. so evaluate it immediately.
     }else if(self.firstWaitingOperation == 'r')
     {
         //unable to use '√' for character, says it's too large. SO I'll just use 'r'
-        NSLog(@"\ntaking the root of... %@", self.waitingOperand);
         self.waitingOperand = [NSNumber numberWithDouble:sqrt([self.waitingOperand doubleValue])];
 
         self.incomingOperand = nil;
@@ -41,21 +42,6 @@
             self.firstWaitingOperation = '\0';
         }
         self.secondWaitingOperation = '\0';
-        
-        NSLog(@"\nfirstWaitingOperation: %c\nsecondWaitingOperation: %c\nwaitingOperand: %@\nincommingOperand: %@", self.firstWaitingOperation, self.secondWaitingOperation, self.waitingOperand, self.incomingOperand);
-        
-    }else if(self.secondWaitingOperation == 'r')
-    {
-        //for situations like:
-        //                           1 + 3 √ =
-        // firstWaitingOperation  =    +   +
-        // secondWaitingOperation =        √
-        // waitingOperand         =    1   1
-        // incomingOperand        =        3
-        
-        //for this, you do the SAME thing (same loop) as below.
-        //so just run the loop below.
-        //HOWEVER, we need to run the above loop again, because '√' will be in the first operand slot, and we need to calculate it.
         
     }else if((self.waitingOperand!=nil)&&(self.firstWaitingOperation!='\0')&&(self.incomingOperand!=nil)&&(self.secondWaitingOperation!='\0'))
     {
@@ -80,8 +66,6 @@
             }
             self.secondWaitingOperation = '\0';
             
-             NSLog(@"\nfirstWaitingOperation: %c\nsecondWaitingOperation: %c\nwaitingOperand: %@\nincommingOperand: %@", self.firstWaitingOperation, self.secondWaitingOperation, self.waitingOperand, self.incomingOperand);
-            
         }else if(self.firstWaitingOperation == '-')
         {
             //subtract the two numbers, put the result in waitingOperand, reset incomingOperand, put
@@ -97,8 +81,6 @@
                 self.firstWaitingOperation = '\0';
             }
             self.secondWaitingOperation = '\0';
-            
-            NSLog(@"\nfirstWaitingOperation: %c\nsecondWaitingOperation: %c\nwaitingOperand: %@\nincommingOperand: %@", self.firstWaitingOperation, self.secondWaitingOperation, self.waitingOperand, self.incomingOperand);
             
         }else if(self.firstWaitingOperation == '/')
         {
@@ -116,9 +98,7 @@
                 self.firstWaitingOperation = '\0';
             }
             self.secondWaitingOperation = '\0';
-            
-            NSLog(@"\nfirstWaitingOperation: %c\nsecondWaitingOperation: %c\nwaitingOperand: %@\nincommingOperand: %@", self.firstWaitingOperation, self.secondWaitingOperation, self.waitingOperand, self.incomingOperand);
-            
+              
         }else if(self.firstWaitingOperation == 'x')
         {
             //multiply the two numbers, put the result in waitingOperand, reset incomingOperand, put
@@ -134,36 +114,34 @@
                 self.firstWaitingOperation = '\0';
             }
             self.secondWaitingOperation = '\0';
-            
-            NSLog(@"\nfirstWaitingOperation: %c\nsecondWaitingOperation: %c\nwaitingOperand: %@\nincommingOperand: %@", self.firstWaitingOperation, self.secondWaitingOperation, self.waitingOperand, self.incomingOperand);
         }
-    }
+        
+        //at the end of these x, +, /, - loops, we need to have a NEW loop that will evaluate the square root if it is left over.
+        //this will check if the first operation was set to square root AFTER all operations have been performed.
+        //if true, evaluate that root!
+        if(self.firstWaitingOperation == 'r')
+        {
+            //unable to use '√' for character, says it's too large. SO I'll just use 'r'
+            self.waitingOperand = [NSNumber numberWithDouble:sqrt([self.waitingOperand doubleValue])];
+            
+            self.incomingOperand = nil;
+            if(self.secondWaitingOperation != '=')
+            {
+                //carry the opertaion over, ONLY if it is NOT an = (no need to carry that over)
+                self.firstWaitingOperation = self.secondWaitingOperation;
+            }else if(self.secondWaitingOperation == '='){
+                //else, ignore it, get rid of it, clear it
+                self.firstWaitingOperation = '\0';
+            }
+            self.secondWaitingOperation = '\0';
+        }
+    }//end all != nil loop.
+    
     //After these loops it's possible that the first operation will be set to "=". We don't want that.
     if(self.firstWaitingOperation == '=')
     {
         self.firstWaitingOperation = '\0';
     }
     
-    if(self.firstWaitingOperation == 'r')
-    {
-        //unable to use '√' for character, says it's too large. SO I'll just use 'r'
-        self.waitingOperand = [NSNumber numberWithDouble:sqrt([self.waitingOperand doubleValue])];
-        
-        NSLog(@"\n2 taking the root of... %@", self.waitingOperand);
-        
-        self.incomingOperand = nil;
-        if(self.secondWaitingOperation != '=')
-        {
-            //carry the opertaion over, ONLY if it is NOT an = (no need to carry that over)
-            self.firstWaitingOperation = self.secondWaitingOperation;
-        }else if(self.secondWaitingOperation == '='){
-            //else, ignore it, get rid of it, clear it
-            self.firstWaitingOperation = '\0';
-        }
-        self.secondWaitingOperation = '\0';
-        
-        NSLog(@"\nfirstWaitingOperation: %c\nsecondWaitingOperation: %c\nwaitingOperand: %@\nincommingOperand: %@", self.firstWaitingOperation, self.secondWaitingOperation, self.waitingOperand, self.incomingOperand);
-        
-    }
 }
 @end
