@@ -5,6 +5,29 @@
 //  Created by Lion User on 25/09/2012.
 //  Copyright (c) 2012 Katie Soto. All rights reserved.
 //
+/*
+ Logic:
+ 1) If the square root button was pressed after 1 number was pressed, evaluate it immediately,
+    and put that value in the "waitingOperand". Clear the firstWaitingOperation from √ to nil.
+    *example case: 9 √
+    1a) if the "=" was pressed after, then show the result, and discard the "="
+        *example case: 9 √ =
+ 2) Wait for ALL 4 variables to be filled.
+    *example cases: 
+        9 + 1 -
+        2 * 3 =
+        8 + 1 √
+    2a) evaluate the first 3 variables: take the waitingOperand, firstWaitingOperation, and
+        incomingOperand, evaluate them based on what the firstWaitingOperation is (+, -, etc.)
+    2b) put the value of the result of step 2a and put replace the waitingOperand with it.
+        for example:
+        9  +   1     - 
+        becomes
+        10 - (nil) (nil)
+ 3) Exit the loop and wait for all 4 to be filled again.
+ Note: there are special cases for "√" and "=", which are immediately evaluated.
+ 
+ */
 
 #import "CalculatorModel.h"
 
