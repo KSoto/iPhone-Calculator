@@ -372,53 +372,6 @@
     <resources>
         <image name="calcBG.png" width="419" height="594"/>
     </resources>
-    <classes>
-        <class className="ViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="addition_action:" candidateClass="UIButton"/>
-                <relationship kind="action" name="clear_action:" candidateClass="UIButton"/>
-                <relationship kind="action" name="decimal_action:" candidateClass="UIButton"/>
-                <relationship kind="action" name="division_action:" candidateClass="UIButton"/>
-                <relationship kind="action" name="equal_action:" candidateClass="UIButton"/>
-                <relationship kind="action" name="multiply_action:" candidateClass="UIButton"/>
-                <relationship kind="action" name="n0_action:" candidateClass="UIButton"/>
-                <relationship kind="action" name="n1_action:" candidateClass="UIButton"/>
-                <relationship kind="action" name="n2_action:" candidateClass="UIButton"/>
-                <relationship kind="action" name="n3_action:" candidateClass="UIButton"/>
-                <relationship kind="action" name="n4_action:" candidateClass="UIButton"/>
-                <relationship kind="action" name="n5_action:" candidateClass="UIButton"/>
-                <relationship kind="action" name="n6_action:" candidateClass="UIButton"/>
-                <relationship kind="action" name="n7_action:" candidateClass="UIButton"/>
-                <relationship kind="action" name="n8_action:" candidateClass="UIButton"/>
-                <relationship kind="action" name="n9_action:" candidateClass="UIButton"/>
-                <relationship kind="action" name="neg_pos_action:" candidateClass="UIButton"/>
-                <relationship kind="action" name="root_action:" candidateClass="UIButton"/>
-                <relationship kind="action" name="subtract_action:" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="_addition_button" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="_clear_button" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="_decimal_button" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="_division_button" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="_equal_button" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="_multipy_button" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="_n0_button" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="_n1_button" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="_n2_button" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="_n3_button" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="_n4_button" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="_n5_button" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="_n6_button" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="_n7_button" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="_n8_button" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="_n9_button" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="_neg_pos_button" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="_operandLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="_operationLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="_root_button" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="_subtract_button" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

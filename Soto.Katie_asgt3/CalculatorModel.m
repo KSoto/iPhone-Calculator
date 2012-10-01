@@ -41,7 +41,6 @@
 
 -(void)doCalculations
 {
-
     if((self.waitingOperand==nil)&&(self.firstWaitingOperation=='\0')&&(self.incomingOperand==nil)&&(self.secondWaitingOperation=='\0'))
     {
         //All variables are nil:
