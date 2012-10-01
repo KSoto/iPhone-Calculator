@@ -41,7 +41,7 @@
 	output: 3
 --Clearing Calculated Data:
 	To clear the calculator of your old data, just press the "AC" button.
---Special Behaviours for Improper Input:
+--Special Behaviors for Improper Input:
     1) (Using a single number with a 2 number operation) Inputing a number, then
 	   a operation, then another operation will result in that operation being 
 	   applied again to the first number. For example:

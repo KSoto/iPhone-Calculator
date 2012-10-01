@@ -1,9 +1,22 @@
 //
-//  ViewController.m
+//  CalculatorModel.m
 //  Soto.Katie_asgt3
 //
-//  Created by Lion User on 20/09/2012.
+//  Author: Katie Soto
+//  Project: iPhone Calculator
+//  Author's Email: KReneSoto@gmail.com
+//  Author's Phone: (714) 213-2228
+//  Date Created: 9/2012
+//  Class: CSUF CPSC 491T - iPhone Mobile App Development
+//  Professor: Michael Shafae
 //  Copyright (c) 2012 Katie Soto. All rights reserved.
+//  Problem Statement: Write an iPhone application that accepts infix notation
+//      arithmetic expressions. The calculator accepts manual input of real
+//      numbers as operands and a fixed set of unary and binary operators. The possible
+//      operators are -, +, ÷, x, ., ±, =, √, and AC.
+//  File Description: This file is our Controller's implementation. Here is where our
+//      controller collects all information, and determines when it's a good time to store
+//      it in the model, and when to call the model to do the calculations.
 //
 /*
  Logic:

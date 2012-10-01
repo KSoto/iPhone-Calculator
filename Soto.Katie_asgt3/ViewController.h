@@ -1,9 +1,21 @@
 //
-//  ViewController.h
+//  CalculatorModel.m
 //  Soto.Katie_asgt3
 //
-//  Created by Lion User on 20/09/2012.
+//  Author: Katie Soto
+//  Project: iPhone Calculator
+//  Author's Email: KReneSoto@gmail.com
+//  Author's Phone: (714) 213-2228
+//  Date Created: 9/2012
+//  Class: CSUF CPSC 491T - iPhone Mobile App Development
+//  Professor: Michael Shafae
 //  Copyright (c) 2012 Katie Soto. All rights reserved.
+//  Problem Statement: Write an iPhone application that accepts infix notation
+//      arithmetic expressions. The calculator accepts manual input of real
+//      numbers as operands and a fixed set of unary and binary operators. The possible
+//      operators are -, +, ÷, x, ., ±, =, √, and AC.
+//  File Description: This file is our Controller's interface. Each button is linked to
+//      a variable and an action.
 //
 
 #import <UIKit/UIKit.h>
@@ -11,10 +23,20 @@
 
 @interface ViewController : UIViewController 
 {
+    //labelString holds our ongoing string when a user is inputting
+    //a number. Ex: 3.29182099 would go in labelString, and will
+    //then be given to the model when the user is done with the input.
     NSMutableString* labelString;
+    //continueOp is a message to the operations to ignore the current
+    //string in the label. For example, when you press "3 + 4 =", the
+    //number "7" will be in the label, but not because the user pressed
+    //it, but because it's the result of the previous operation. This
+    //variable will tell them when to ignore it (or not).
     bool continueOp;
     
 @private
+    //CalculatorModel is our model, and we need an instance of it to
+    //pass it information (and to do the calculations)
     CalculatorModel* _cModel;
     
     //label that will display the operation (+, -, etc.) aligned left
@@ -69,6 +91,8 @@
 @property (nonatomic, retain) UIButton* root_button;
 @property (nonatomic, retain) UIButton* clear_button;
 
+//each button has an associated action. When the user presses
+//the associated button, the correct method will be called.
 -(IBAction)n1_action :(UIButton*)sender;
 -(IBAction)n2_action :(UIButton*)sender;
 -(IBAction)n3_action :(UIButton*)sender;
